@@ -1,0 +1,134 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Accessing Civil Legal Aid
+description: Describes the components related to accessing civil legal aid for members of the public
+
+elements:
+- type: Person
+  name: Case Handler
+  position: '1900,480'
+- type: Person
+  name: Citizen
+  tags: external
+  position: '2700,80'
+- type: Person
+  name: Civil Legal Provider
+  tags: external
+  position: '1100,80'
+- type: Person
+  name: Manager Information Analyst
+  position: '1900,1920'
+- type: Software System
+  name: Case Handler Identity Database
+  tags: database
+  position: '100,820'
+- type: Software System
+  name: Civil Legal Advice
+  description: (CLA_public)
+  tags: web
+  position: '2700,1080'
+- type: Software System
+  name: Civil Legal Advice Case Handler
+  description: (CLA_frontend and CLA_backend)
+  tags: web
+  position: '1100,1080'
+- type: Software System
+  name: Contract Work Assessment
+  description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
+  position: '100,1980'
+- type: Software System
+  name: Data Warehouse
+  description: (OBIEE) Collects data related to common concepts from various sources
+  tags: database
+  position: '1100,1980'
+- type: Software System
+  name: Find a Legal Adviser
+  description: (FALA)
+  tags: web
+  position: '2700,1520'
+- type: Software System
+  name: Legal Adviser API
+  description: (laa-legal-adviser-api)
+  position: '2700,1980'
+- type: Software System
+  name: Provider Case Handler
+  tags: external
+  position: '110,120'
+- type: Software System
+  name: Provider Identity Database
+  tags: database
+  position: '110,1380'
+
+relationships:
+- source: Case Handler
+  description: Talks to
+  destination: Citizen
+- source: Case Handler
+  description: Checks eligibility and data of incoming legal aid requests
+  destination: Civil Legal Advice Case Handler
+- source: Case Handler
+  description: Talks to
+  destination: Civil Legal Provider
+- source: Citizen
+  description: Looking for legal aid
+  destination: Civil Legal Advice
+- source: Citizen
+  description: Talks to
+  destination: Civil Legal Provider
+- source: Civil Legal Advice Case Handler
+  description: uses
+  destination: Case Handler Identity Database
+- source: Civil Legal Advice Case Handler
+  description: uses
+  destination: Provider Identity Database
+- source: Civil Legal Advice
+  description: Registers incoming legal aid requests
+  destination: Civil Legal Advice Case Handler
+- source: Civil Legal Advice
+  description: Get Civil Legal Provider details if necessary
+  destination: Find a Legal Adviser
+- source: Civil Legal Provider
+  description: Logs in and uploads work report CSV to
+  destination: Civil Legal Advice Case Handler
+- source: Civil Legal Provider
+  description: Manages work via
+  destination: Provider Case Handler
+- source: Contract Work Assessment
+  description: Periodically updates Civil Legal Provider details
+  destination: Data Warehouse
+- source: Data Warehouse
+  description: Periodically updates Civil Legal Provider details
+  destination: Civil Legal Advice Case Handler
+- source: Find a Legal Adviser
+  description: uses
+  destination: Legal Adviser API
+- source: Manager Information Analyst
+  description: Periodically downloads Civil Legal Provider details
+  destination: Data Warehouse
+- source: Manager Information Analyst
+  description: Periodically updates Civil Legal Provider details
+  destination: Legal Adviser API
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A4_Landscape
