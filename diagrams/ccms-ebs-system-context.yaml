@@ -1,0 +1,85 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Context
+scope: CCMS eBusiness Suite
+description: The system context diagram for CCMS eBusiness Suite. Deliberately omits communication details such as SOA and Information HUB
+
+elements:
+- type: Person
+  name: Caseworker
+  description: Civil Legal Aid Caseworker
+  position: '1025,50'
+- type: Software System
+  name: CCMS Financials
+  description: (Oracle Financials) Accounting functions for the legal aid fund
+  position: '1000,1200'
+- type: Software System
+  name: CCMS Provider UI
+  description: Civil legal aid application forms
+  position: '200,700'
+- type: Software System
+  name: CCMS eBusiness Suite
+  description: Handles Civil Legal Aid applications. (CCMS = Client and Cost Management System.
+  position: '1000,700'
+- type: Software System
+  name: CIS
+  description: Civil / family certified work, exceptional cases, housing court duty, very high cost. Invoices pass through it.
+  position: '1900,200'
+- type: Software System
+  name: Central Print
+  description: Civil legal aid application forms
+  position: '200,1200'
+- type: Software System
+  name: Contract Work Assessment
+  description: Holds list of contracted legal providers
+  position: '1900,700'
+- type: Software System
+  name: LAA Benefit Checker
+  description: Confirms if individual is in receipt of a passported benefit by calling DWP benefit checker service
+  position: '1900,1200'
+
+relationships:
+- source: CCMS Provider UI
+  description: Submits form results via SOA
+  destination: CCMS eBusiness Suite
+- source: CCMS eBusiness Suite
+  destination: CCMS Financials
+- source: CCMS eBusiness Suite
+  description: Correspondence and Certificates
+  destination: Central Print
+- source: CCMS eBusiness Suite
+  description: Passported benefit check
+  destination: LAA Benefit Checker
+- source: CIS
+  description: Invoices, Payments, Contributions
+  destination: CCMS eBusiness Suite
+- source: Caseworker
+  description: uses
+  destination: CCMS eBusiness Suite
+- source: Contract Work Assessment
+  description: Provider, User, Bank sync. Contract lookup
+  destination: CCMS eBusiness Suite
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A5_Landscape
+
