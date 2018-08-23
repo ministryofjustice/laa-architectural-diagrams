@@ -35,7 +35,7 @@ elements:
   description: (CLA_backend)
   position: '1900,1300'
 - type: Software System
-  name: Civil Legal Advice Case Handler
+  name: Civil Legal Advice Case Handling System
   description: (CLA_frontend)
   tags: web
   position: '1000,700'
@@ -75,7 +75,7 @@ relationships:
   destination: Citizen
 - source: Case Handler
   description: Checks eligibility and data of incoming legal aid requests
-  destination: Civil Legal Advice Case Handler
+  destination: Civil Legal Advice Case Handling System
 - source: Case Handler
   description: Talks to
   destination: Civil Legal Provider
@@ -100,12 +100,12 @@ relationships:
 - source: Civil Legal Advice Backend
   description: uses
   destination: Provider Identity Database
-- source: Civil Legal Advice Case Handler
+- source: Civil Legal Advice Case Handling System
   description: Registers and updates incoming legal aid requests
   destination: Civil Legal Advice Backend
 - source: Civil Legal Provider
   description: Logs in and uploads work report CSV to
-  destination: Civil Legal Advice Case Handler
+  destination: Civil Legal Advice Case Handling System
 - source: Civil Legal Provider
   description: Manages work via
   destination: Provider Case Handler
