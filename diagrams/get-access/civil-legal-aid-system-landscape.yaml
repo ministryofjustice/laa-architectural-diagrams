@@ -19,8 +19,8 @@ elements:
   tags: external
   position: '1100,80'
 - type: Person
-  name: Manager Information Analyst
-  position: '1900,1920'
+  name: Management Information Analyst
+  position: '1900,1960'
 - type: Software System
   name: Case Handler Identity Database
   tags: database
@@ -105,10 +105,10 @@ relationships:
 - source: Find a Legal Adviser
   description: uses
   destination: Legal Adviser API
-- source: Manager Information Analyst
+- source: Management Information Analyst
   description: Periodically downloads Civil Legal Provider details
   destination: Data Warehouse
-- source: Manager Information Analyst
+- source: Management Information Analyst
   description: Periodically updates Civil Legal Provider details
   destination: Legal Adviser API
 
