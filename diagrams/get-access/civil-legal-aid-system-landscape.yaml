@@ -26,8 +26,8 @@ elements:
   tags: database
   position: '100,800'
 - type: Software System
-  name: Civil Legal Advice
-  description: (CLA_public)
+  name: Check Legal Aid
+  description: (CLA_public) https://checklegalaid.service.gov.uk/
   tags: web
   position: '2700,1000'
 - type: Software System
@@ -72,9 +72,15 @@ relationships:
 - source: Case Handler
   description: Talks to
   destination: Civil Legal Provider
+- source: Check Legal Aid
+  description: Registers incoming legal aid requests
+  destination: Civil Legal Advice Case Handler
+- source: Check Legal Aid
+  description: uses
+  destination: Legal Adviser API
 - source: Citizen
   description: Looking for legal aid
-  destination: Civil Legal Advice
+  destination: Check Legal Aid
 - source: Citizen
   description: Talks to
   destination: Civil Legal Provider
@@ -87,12 +93,6 @@ relationships:
 - source: Civil Legal Advice Case Handler
   description: uses
   destination: Provider Identity Database
-- source: Civil Legal Advice
-  description: Registers incoming legal aid requests
-  destination: Civil Legal Advice Case Handler
-- source: Civil Legal Advice
-  description: uses
-  destination: Legal Adviser API
 - source: Civil Legal Provider
   description: Logs in and uploads work report CSV to
   destination: Civil Legal Advice Case Handler
