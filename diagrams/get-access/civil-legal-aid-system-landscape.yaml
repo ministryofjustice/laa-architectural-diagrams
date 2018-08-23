@@ -9,7 +9,7 @@ description: Describes the components related to accessing civil legal aid for m
 elements:
 - type: Person
   name: Case Handler
-  position: '1925,450'
+  position: '1925,350'
 - type: Person
   name: Citizen
   tags: external
@@ -24,17 +24,21 @@ elements:
 - type: Software System
   name: Case Handler Identity Database
   tags: database
-  position: '100,800'
+  position: '1100,1700'
 - type: Software System
   name: Check Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
   tags: web
-  position: '2700,1000'
+  position: '2500,900'
+- type: Software System
+  name: Civil Legal Advice Backend
+  description: (CLA_backend)
+  position: '1900,1500'
 - type: Software System
   name: Civil Legal Advice Case Handler
-  description: (CLA_frontend and CLA_backend)
+  description: (CLA_frontend)
   tags: web
-  position: '1100,1000'
+  position: '1100,900'
 - type: Software System
   name: Contract Work Assessment
   description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
@@ -48,7 +52,7 @@ elements:
   name: Find a Legal Adviser
   description: (FALA)
   tags: web
-  position: '3000,1000'
+  position: '3000,900'
 - type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
@@ -60,7 +64,7 @@ elements:
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '100,1400'
+  position: '1100,1400'
 
 relationships:
 - source: Case Handler
@@ -74,7 +78,7 @@ relationships:
   destination: Civil Legal Provider
 - source: Check Legal Aid
   description: Registers incoming legal aid requests
-  destination: Civil Legal Advice Case Handler
+  destination: Civil Legal Advice Backend
 - source: Check Legal Aid
   description: uses
   destination: Legal Adviser API
@@ -87,12 +91,15 @@ relationships:
 - source: Citizen
   description: Looking for nearby legal advisers
   destination: Find a Legal Adviser
-- source: Civil Legal Advice Case Handler
+- source: Civil Legal Advice Backend
   description: uses
   destination: Case Handler Identity Database
-- source: Civil Legal Advice Case Handler
+- source: Civil Legal Advice Backend
   description: uses
   destination: Provider Identity Database
+- source: Civil Legal Advice Case Handler
+  description: Registers and updates incoming legal aid requests
+  destination: Civil Legal Advice Backend
 - source: Civil Legal Provider
   description: Logs in and uploads work report CSV to
   destination: Civil Legal Advice Case Handler
@@ -104,7 +111,7 @@ relationships:
   destination: Data Warehouse
 - source: Data Warehouse
   description: Periodically updates Civil Legal Provider details
-  destination: Civil Legal Advice Case Handler
+  destination: Civil Legal Advice Backend
 - source: Find a Legal Adviser
   description: uses
   destination: Legal Adviser API
