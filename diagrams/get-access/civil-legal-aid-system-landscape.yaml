@@ -9,58 +9,58 @@ description: Describes the components related to accessing civil legal aid for m
 elements:
 - type: Person
   name: Case Handler
-  position: '1900,480'
+  position: '1925,450'
 - type: Person
   name: Citizen
   tags: external
-  position: '2700,80'
+  position: '2725,50'
 - type: Person
   name: Civil Legal Provider
   tags: external
-  position: '1100,80'
+  position: '1125,50'
 - type: Person
   name: Management Information Analyst
-  position: '1900,1960'
+  position: '1925,1950'
 - type: Software System
   name: Case Handler Identity Database
   tags: database
-  position: '100,820'
+  position: '100,800'
 - type: Software System
   name: Civil Legal Advice
   description: (CLA_public)
   tags: web
-  position: '2700,1080'
+  position: '2700,1000'
 - type: Software System
   name: Civil Legal Advice Case Handler
   description: (CLA_frontend and CLA_backend)
   tags: web
-  position: '1100,1080'
+  position: '1100,1000'
 - type: Software System
   name: Contract Work Assessment
   description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
-  position: '100,1980'
+  position: '100,2000'
 - type: Software System
   name: Data Warehouse
   description: (OBIEE) Collects data related to common concepts from various sources
   tags: database
-  position: '1100,1980'
+  position: '1100,2000'
 - type: Software System
   name: Find a Legal Adviser
   description: (FALA)
   tags: web
-  position: '2700,1520'
+  position: '2700,1500'
 - type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
-  position: '2700,1980'
+  position: '2700,2000'
 - type: Software System
   name: Provider Case Handler
   tags: external
-  position: '110,120'
+  position: '100,100'
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '110,1380'
+  position: '100,1400'
 
 relationships:
 - source: Case Handler
