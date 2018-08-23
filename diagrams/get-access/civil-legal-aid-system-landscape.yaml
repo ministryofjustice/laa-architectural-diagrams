@@ -20,25 +20,25 @@ elements:
   position: '1125,50'
 - type: Person
   name: Management Information Analyst
-  position: '1925,1950'
+  position: '2825,1950'
 - type: Software System
   name: Case Handler Identity Database
   tags: database
-  position: '1100,1700'
+  position: '1100,1600'
 - type: Software System
   name: Check Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
   tags: web,public
-  position: '2500,900'
+  position: '2500,700'
 - type: Software System
   name: Civil Legal Advice Backend
   description: (CLA_backend)
-  position: '1900,1500'
+  position: '1900,1400'
 - type: Software System
   name: Civil Legal Advice Case Handler
   description: (CLA_frontend)
   tags: web
-  position: '1100,900'
+  position: '1100,700'
 - type: Software System
   name: Contract Work Assessment
   description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
@@ -47,16 +47,16 @@ elements:
   name: Data Warehouse
   description: (OBIEE) Collects data related to common concepts from various sources
   tags: database
-  position: '1100,2000'
+  position: '1900,2000'
 - type: Software System
   name: Find a Legal Adviser
   description: (FALA) https://find-legal-advice.justice.gov.uk/
   tags: web,public
-  position: '3000,900'
+  position: '3000,700'
 - type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
-  position: '2800,2000'
+  position: '2800,1400'
 - type: Software System
   name: Provider Case Handler
   tags: external
@@ -64,7 +64,7 @@ elements:
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '1100,1400'
+  position: '1100,1200'
 
 relationships:
 - source: Case Handler
