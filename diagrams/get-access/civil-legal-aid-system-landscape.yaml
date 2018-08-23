@@ -17,14 +17,14 @@ elements:
 - type: Person
   name: Civil Legal Provider
   tags: external
-  position: '1125,50'
+  position: '1025,50'
 - type: Person
   name: Management Information Analyst
   position: '2825,1950'
 - type: Software System
   name: Case Handler Identity Database
   tags: database
-  position: '1100,1600'
+  position: '1000,1100'
 - type: Software System
   name: Check Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
@@ -33,12 +33,12 @@ elements:
 - type: Software System
   name: Civil Legal Advice Backend
   description: (CLA_backend)
-  position: '1900,1400'
+  position: '1900,1300'
 - type: Software System
   name: Civil Legal Advice Case Handler
   description: (CLA_frontend)
   tags: web
-  position: '1100,700'
+  position: '1000,700'
 - type: Software System
   name: Contract Work Assessment
   description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
@@ -54,9 +54,12 @@ elements:
   tags: web,public
   position: '3000,700'
 - type: Software System
+  name: Hub Job
+  position: '1000,2000'
+- type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
-  position: '2800,1400'
+  position: '2800,1300'
 - type: Software System
   name: Provider Case Handler
   tags: external
@@ -64,7 +67,7 @@ elements:
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '1100,1200'
+  position: '1000,1500'
 
 relationships:
 - source: Case Handler
@@ -108,13 +111,16 @@ relationships:
   destination: Provider Case Handler
 - source: Contract Work Assessment
   description: Periodically updates Civil Legal Provider details
-  destination: Data Warehouse
-- source: Data Warehouse
-  description: Periodically updates Civil Legal Provider details
-  destination: Civil Legal Advice Backend
+  destination: Hub Job
 - source: Find a Legal Adviser
   description: uses
   destination: Legal Adviser API
+- source: Hub Job
+  description: Periodically updates Civil Legal Provider details
+  destination: Data Warehouse
+- source: Hub Job
+  description: Periodically updates Civil Legal Provider details
+  destination: Provider Identity Database
 - source: Management Information Analyst
   description: Periodically downloads Civil Legal Provider details
   destination: Data Warehouse
