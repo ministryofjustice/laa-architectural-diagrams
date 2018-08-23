@@ -13,7 +13,7 @@ elements:
 - type: Person
   name: Citizen
   tags: external
-  position: '2725,50'
+  position: '2825,50'
 - type: Person
   name: Civil Legal Provider
   tags: external
@@ -48,11 +48,11 @@ elements:
   name: Find a Legal Adviser
   description: (FALA)
   tags: web
-  position: '2700,1500'
+  position: '3000,1000'
 - type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
-  position: '2700,2000'
+  position: '2800,2000'
 - type: Software System
   name: Provider Case Handler
   tags: external
@@ -78,6 +78,9 @@ relationships:
 - source: Citizen
   description: Talks to
   destination: Civil Legal Provider
+- source: Citizen
+  description: Looking for nearby legal advisers
+  destination: Find a Legal Adviser
 - source: Civil Legal Advice Case Handler
   description: uses
   destination: Case Handler Identity Database
@@ -88,8 +91,8 @@ relationships:
   description: Registers incoming legal aid requests
   destination: Civil Legal Advice Case Handler
 - source: Civil Legal Advice
-  description: Get Civil Legal Provider details if necessary
-  destination: Find a Legal Adviser
+  description: uses
+  destination: Legal Adviser API
 - source: Civil Legal Provider
   description: Logs in and uploads work report CSV to
   destination: Civil Legal Advice Case Handler
