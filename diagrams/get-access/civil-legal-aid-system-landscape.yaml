@@ -28,7 +28,7 @@ elements:
 - type: Software System
   name: Check Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
-  tags: web
+  tags: web,public
   position: '2500,900'
 - type: Software System
   name: Civil Legal Advice Backend
@@ -50,8 +50,8 @@ elements:
   position: '1100,2000'
 - type: Software System
   name: Find a Legal Adviser
-  description: (FALA)
-  tags: web
+  description: (FALA) https://find-legal-advice.justice.gov.uk/
+  tags: web,public
   position: '3000,900'
 - type: Software System
   name: Legal Adviser API
@@ -137,6 +137,10 @@ styles:
   tag: external
   background: '#28a197'
   color: '#ffffff'
+- type: element
+  tag: public
+  background: '#b2b3cf'
+  color: '#22245f'
 - type: element
   tag: web
   shape: WebBrowser
