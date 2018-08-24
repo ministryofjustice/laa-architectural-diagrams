@@ -36,8 +36,8 @@ elements:
   position: '1900,1300'
 - type: Software System
   name: Civil Legal Advice Case Handling System
-  description: (CLA_frontend)
-  tags: web
+  description: (CLA_frontend) https://cases.civillegaladvice.service.gov.uk/
+  tags: web,public
   position: '1000,700'
 - type: Software System
   name: Contract Work Assessment
