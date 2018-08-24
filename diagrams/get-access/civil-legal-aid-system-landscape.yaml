@@ -9,31 +9,31 @@ description: Describes the components related to accessing civil legal aid for m
 elements:
 - type: Person
   name: Case Handler
-  position: '1925,350'
+  position: '2025,350'
 - type: Person
   name: Citizen
   tags: external
-  position: '2825,50'
+  position: '3325,50'
 - type: Person
   name: Civil Legal Provider
   tags: external
   position: '1025,50'
 - type: Person
   name: Management Information Analyst
-  position: '2825,1950'
+  position: '3325,1950'
 - type: Software System
   name: Case Handler Identity Database
   tags: database
-  position: '1000,1100'
+  position: '1700,2000'
 - type: Software System
   name: Check Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
   tags: web,public
-  position: '2500,700'
+  position: '2900,700'
 - type: Software System
   name: Civil Legal Advice Backend
   description: (CLA_backend)
-  position: '1900,1300'
+  position: '2000,1400'
 - type: Software System
   name: Civil Legal Advice Case Handling System
   description: (CLA_frontend) https://cases.civillegaladvice.service.gov.uk/
@@ -42,24 +42,24 @@ elements:
 - type: Software System
   name: Contract Work Assessment
   description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
-  position: '100,2000'
+  position: '1000,2800'
 - type: Software System
   name: Data Warehouse
   description: (OBIEE) Collects data related to common concepts from various sources
   tags: database
-  position: '1900,2000'
+  position: '3300,2800'
 - type: Software System
   name: Find a Legal Adviser
   description: (FALA) https://find-legal-advice.justice.gov.uk/
   tags: web,public
-  position: '3000,700'
+  position: '3700,700'
 - type: Software System
   name: Hub Job
-  position: '1000,2000'
+  position: '2000,2800'
 - type: Software System
   name: Legal Adviser API
   description: (laa-legal-adviser-api)
-  position: '2800,1300'
+  position: '3300,1400'
 - type: Software System
   name: Provider Case Handler
   tags: external
@@ -67,7 +67,7 @@ elements:
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '1000,1500'
+  position: '2300,2000'
 
 relationships:
 - source: Case Handler
@@ -151,4 +151,4 @@ styles:
   tag: web
   shape: WebBrowser
 
-size: A4_Landscape
+size: A3_Landscape
