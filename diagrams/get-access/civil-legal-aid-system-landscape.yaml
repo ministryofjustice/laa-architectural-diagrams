@@ -67,7 +67,7 @@ elements:
   description: (laa-legal-adviser-api)
   position: '3300,1300'
 - type: Software System
-  name: Provider Case Handler
+  name: Provider's Case Handling System
   tags: external
   position: '100,100'
 - type: Software System
@@ -119,7 +119,7 @@ relationships:
   destination: Civil Legal Advice Case Handling System
 - source: Civil Legal Advice Specialist Provider
   description: Manages work via
-  destination: Provider Case Handler
+  destination: Provider's Case Handling System
 - source: Contract Analyst
   description: Periodically downloads reports
   destination: Civil Legal Advice Case Handling System
