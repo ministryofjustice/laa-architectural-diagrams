@@ -8,7 +8,7 @@ description: Describes the components related to accessing civil legal aid for m
 
 elements:
 - type: Person
-  name: Case Handler
+  name: Operator
   position: '2025,350'
 - type: Person
   name: Citizen
@@ -28,7 +28,7 @@ elements:
   name: Management Information Team
   position: '3025,1950'
 - type: Software System
-  name: Case Handler Identity Database
+  name: Operator Identity Database
   tags: database
   position: '1700,2000'
 - type: Software System
@@ -81,13 +81,13 @@ elements:
   position: '3600,2000'
 
 relationships:
-- source: Case Handler
+- source: Operator
   description: Talks to
   destination: Citizen
-- source: Case Handler
+- source: Operator
   description: Checks eligibility and data of incoming legal aid requests
   destination: Civil Legal Advice Case Handling System
-- source: Case Handler
+- source: Operator
   description: Talks to
   destination: Civil Legal Advice Specialist Provider
 - source: Check Legal Aid
@@ -107,7 +107,7 @@ relationships:
   destination: Find a Legal Adviser
 - source: Civil Legal Advice Backend
   description: uses
-  destination: Case Handler Identity Database
+  destination: Operator Identity Database
 - source: Civil Legal Advice Backend
   description: uses
   destination: Provider Identity Database
