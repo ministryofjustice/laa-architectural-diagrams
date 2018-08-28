@@ -28,7 +28,7 @@ elements:
   name: Operator
   position: '2625,50'
 - type: Software System
-  name: Check Legal Aid
+  name: Check If You Can Get Legal Aid
   description: (CLA_public) https://checklegalaid.service.gov.uk/
   tags: web,public
   position: '2600,1100'
@@ -81,15 +81,15 @@ elements:
   position: '3700,2300'
 
 relationships:
-- source: Check Legal Aid
+- source: Check If You Can Get Legal Aid
   description: Registers incoming legal aid requests
   destination: Civil Legal Advice Backend
-- source: Check Legal Aid
+- source: Check If You Can Get Legal Aid
   description: uses
   destination: Legal Adviser Location Search API
 - source: Citizen
   description: Looking for legal aid
-  destination: Check Legal Aid
+  destination: Check If You Can Get Legal Aid
 - source: Citizen
   description: Talks to
   destination: Civil Legal Advice Specialist Provider
