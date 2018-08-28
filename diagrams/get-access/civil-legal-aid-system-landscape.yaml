@@ -19,7 +19,7 @@ elements:
   tags: external
   position: '1025,50'
 - type: Person
-  name: Management Information Analyst
+  name: Management Information Team
   position: '3025,1950'
 - type: Software System
   name: Case Handler Identity Database
@@ -129,10 +129,10 @@ relationships:
 - source: Legal Adviser API
   description: uses
   destination: postcodes.io
-- source: Management Information Analyst
+- source: Management Information Team
   description: Periodically downloads Civil Legal Provider details
   destination: Data Warehouse
-- source: Management Information Analyst
+- source: Management Information Team
   description: Periodically updates Civil Legal Provider details
   destination: Legal Adviser API
 
