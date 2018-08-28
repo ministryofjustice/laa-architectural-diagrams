@@ -119,6 +119,13 @@ relationships:
 - source: Contract Analyst
   description: Periodically downloads reports
   destination: Civil Legal Advice Case Handling System
+  vertices:
+  - '1300,1150'
+- source: Contract Analyst
+  description: Manages provider users
+  destination: Civil Legal Advice Case Handling System
+  vertices:
+  - '1300,1000'
 - source: Contract Work Assessment
   description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Hub Job
