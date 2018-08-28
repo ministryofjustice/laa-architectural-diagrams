@@ -15,7 +15,7 @@ elements:
   tags: external
   position: '3325,50'
 - type: Person
-  name: Civil Legal Provider
+  name: Civil Legal Advice Specialist Provider
   tags: external
   position: '1025,50'
 - type: Person
@@ -41,7 +41,7 @@ elements:
   position: '1000,700'
 - type: Software System
   name: Contract Work Assessment
-  description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
+  description: (CWA) Source of truth for Civil Legal Advice Specialist Provider details (amongst other responsibilities)
   position: '1000,2800'
 - type: Software System
   name: Data Warehouse
@@ -83,7 +83,7 @@ relationships:
   destination: Civil Legal Advice Case Handling System
 - source: Case Handler
   description: Talks to
-  destination: Civil Legal Provider
+  destination: Civil Legal Advice Specialist Provider
 - source: Check Legal Aid
   description: Registers incoming legal aid requests
   destination: Civil Legal Advice Backend
@@ -95,7 +95,7 @@ relationships:
   destination: Check Legal Aid
 - source: Citizen
   description: Talks to
-  destination: Civil Legal Provider
+  destination: Civil Legal Advice Specialist Provider
 - source: Citizen
   description: Looking for nearby legal advisers
   destination: Find a Legal Adviser
@@ -108,32 +108,32 @@ relationships:
 - source: Civil Legal Advice Case Handling System
   description: Registers and updates incoming legal aid requests
   destination: Civil Legal Advice Backend
-- source: Civil Legal Provider
+- source: Civil Legal Advice Specialist Provider
   description: Logs in and uploads work report CSV to
   destination: Civil Legal Advice Case Handling System
-- source: Civil Legal Provider
+- source: Civil Legal Advice Specialist Provider
   description: Manages work via
   destination: Provider Case Handler
 - source: Contract Work Assessment
-  description: Periodically updates Civil Legal Provider details
+  description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Hub Job
 - source: Find a Legal Adviser
   description: uses
   destination: Legal Adviser API
 - source: Hub Job
-  description: Periodically updates Civil Legal Provider details
+  description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Data Warehouse
 - source: Hub Job
-  description: Periodically updates Civil Legal Provider details
+  description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Provider Identity Database
 - source: Legal Adviser API
   description: uses
   destination: postcodes.io
 - source: Management Information Team
-  description: Periodically downloads Civil Legal Provider details
+  description: Periodically downloads Civil Legal Advice Specialist Provider details
   destination: Data Warehouse
 - source: Management Information Team
-  description: Periodically updates Civil Legal Provider details
+  description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Legal Adviser API
 
 styles:
