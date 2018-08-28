@@ -57,7 +57,7 @@ elements:
   name: Hub Job
   position: '2300,2800'
 - type: Software System
-  name: Legal Adviser API
+  name: Legal Adviser Location Search API
   description: (laa-legal-adviser-api)
   position: '3300,1300'
 - type: Software System
@@ -89,7 +89,7 @@ relationships:
   destination: Civil Legal Advice Backend
 - source: Check Legal Aid
   description: uses
-  destination: Legal Adviser API
+  destination: Legal Adviser Location Search API
 - source: Citizen
   description: Looking for legal aid
   destination: Check Legal Aid
@@ -119,14 +119,14 @@ relationships:
   destination: Hub Job
 - source: Find a Legal Adviser
   description: uses
-  destination: Legal Adviser API
+  destination: Legal Adviser Location Search API
 - source: Hub Job
   description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Data Warehouse
 - source: Hub Job
   description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Provider Identity Database
-- source: Legal Adviser API
+- source: Legal Adviser Location Search API
   description: uses
   destination: postcodes.io
 - source: Management Information Team
@@ -134,7 +134,7 @@ relationships:
   destination: Data Warehouse
 - source: Management Information Team
   description: Periodically updates Civil Legal Advice Specialist Provider details
-  destination: Legal Adviser API
+  destination: Legal Adviser Location Search API
 
 styles:
 - type: element
