@@ -8,109 +8,157 @@ description: Describes the components related to accessing civil legal aid for m
 
 elements:
 - type: Person
-  name: Case Handler
-  position: '1900,480'
-- type: Person
   name: Citizen
   tags: external
-  position: '2700,80'
+  position: '3725,350'
 - type: Person
-  name: Civil Legal Provider
+  name: Civil Legal Advice Specialist Provider
   tags: external
-  position: '1100,80'
+  position: '1525,350'
 - type: Person
-  name: Manager Information Analyst
-  position: '1900,1920'
+  name: Contract Analyst
+  position: '725,750'
+- type: Person
+  name: First Line Support
+  position: '725,1250'
+- type: Person
+  name: Management Information Team
+  position: '3225,2250'
+- type: Person
+  name: Operator
+  position: '2625,50'
 - type: Software System
-  name: Case Handler Identity Database
-  tags: database
-  position: '100,820'
+  name: Check If You Can Get Legal Aid
+  description: (CLA_public) https://checklegalaid.service.gov.uk/
+  tags: web,public
+  position: '2600,1100'
 - type: Software System
-  name: Civil Legal Advice
-  description: (CLA_public)
-  tags: web
-  position: '2700,1080'
+  name: Civil Legal Advice Backend
+  description: (CLA_backend)
+  position: '2100,1600'
 - type: Software System
-  name: Civil Legal Advice Case Handler
-  description: (CLA_frontend and CLA_backend)
-  tags: web
-  position: '1100,1080'
+  name: Civil Legal Advice Case Handling System
+  description: (CLA_frontend) https://cases.civillegaladvice.service.gov.uk/
+  tags: web,public
+  position: '1500,1100'
 - type: Software System
   name: Contract Work Assessment
-  description: (CWA) Source of truth for Civil Legal Provider details (amongst other responsibilities)
-  position: '100,1980'
+  description: (CWA) Source of truth for Civil Legal Advice Specialist Provider details (amongst other responsibilities)
+  position: '1000,3000'
 - type: Software System
   name: Data Warehouse
   description: (OBIEE) Collects data related to common concepts from various sources
   tags: database
-  position: '1100,1980'
+  position: '3200,3000'
 - type: Software System
   name: Find a Legal Adviser
-  description: (FALA)
-  tags: web
-  position: '2700,1520'
+  description: (FALA) https://find-legal-advice.justice.gov.uk/
+  tags: web,public
+  position: '3700,1100'
 - type: Software System
-  name: Legal Adviser API
+  name: Hub Job
+  position: '2100,3000'
+- type: Software System
+  name: Legal Adviser Location Search API
   description: (laa-legal-adviser-api)
-  position: '2700,1980'
+  position: '3200,1600'
 - type: Software System
-  name: Provider Case Handler
-  tags: external
-  position: '110,120'
+  name: Operator Identity Database
+  tags: database
+  position: '1600,2300'
 - type: Software System
   name: Provider Identity Database
   tags: database
-  position: '110,1380'
+  position: '2100,2300'
+- type: Software System
+  name: Provider's Case Handling System
+  tags: external
+  position: '700,400'
+- type: Software System
+  name: postcodes.io
+  description: Postcode lookup API for latitude/longitude conversion
+  tags: external
+  position: '3700,2300'
 
 relationships:
-- source: Case Handler
-  description: Talks to
-  destination: Citizen
-- source: Case Handler
-  description: Checks eligibility and data of incoming legal aid requests
-  destination: Civil Legal Advice Case Handler
-- source: Case Handler
-  description: Talks to
-  destination: Civil Legal Provider
+- source: Check If You Can Get Legal Aid
+  description: Registers incoming legal aid requests
+  destination: Civil Legal Advice Backend
+- source: Check If You Can Get Legal Aid
+  description: uses
+  destination: Legal Adviser Location Search API
 - source: Citizen
   description: Looking for legal aid
-  destination: Civil Legal Advice
+  destination: Check If You Can Get Legal Aid
 - source: Citizen
   description: Talks to
-  destination: Civil Legal Provider
-- source: Civil Legal Advice Case Handler
+  destination: Civil Legal Advice Specialist Provider
+- source: Citizen
+  description: Looking for nearby legal advisers
+  destination: Find a Legal Adviser
+- source: Civil Legal Advice Backend
   description: uses
-  destination: Case Handler Identity Database
-- source: Civil Legal Advice Case Handler
+  destination: Operator Identity Database
+- source: Civil Legal Advice Backend
   description: uses
   destination: Provider Identity Database
-- source: Civil Legal Advice
-  description: Registers incoming legal aid requests
-  destination: Civil Legal Advice Case Handler
-- source: Civil Legal Advice
-  description: Get Civil Legal Provider details if necessary
-  destination: Find a Legal Adviser
-- source: Civil Legal Provider
+- source: Civil Legal Advice Case Handling System
+  description: Registers and updates incoming legal aid requests
+  destination: Civil Legal Advice Backend
+- source: Civil Legal Advice Specialist Provider
   description: Logs in and uploads work report CSV to
-  destination: Civil Legal Advice Case Handler
-- source: Civil Legal Provider
+  destination: Civil Legal Advice Case Handling System
+- source: Civil Legal Advice Specialist Provider
+  description: Looking for nearby legal advisers for citizens
+  destination: Find a Legal Adviser
+  vertices:
+  - '3500,700'
+- source: Civil Legal Advice Specialist Provider
   description: Manages work via
-  destination: Provider Case Handler
+  destination: Provider's Case Handling System
+- source: Contract Analyst
+  description: Periodically downloads reports
+  destination: Civil Legal Advice Case Handling System
+  vertices:
+  - '1300,1150'
+- source: Contract Analyst
+  description: Manages provider users
+  destination: Civil Legal Advice Case Handling System
+  vertices:
+  - '1300,1000'
 - source: Contract Work Assessment
-  description: Periodically updates Civil Legal Provider details
-  destination: Data Warehouse
-- source: Data Warehouse
-  description: Periodically updates Civil Legal Provider details
-  destination: Civil Legal Advice Case Handler
+  description: Periodically updates Civil Legal Advice Specialist Provider details
+  destination: Hub Job
 - source: Find a Legal Adviser
   description: uses
-  destination: Legal Adviser API
-- source: Manager Information Analyst
-  description: Periodically downloads Civil Legal Provider details
+  destination: Legal Adviser Location Search API
+- source: First Line Support
+  description: Manages provider and operator accounts
+  destination: Civil Legal Advice Case Handling System
+- source: Hub Job
+  description: Periodically updates Civil Legal Advice Specialist Provider details
   destination: Data Warehouse
-- source: Manager Information Analyst
-  description: Periodically updates Civil Legal Provider details
-  destination: Legal Adviser API
+- source: Hub Job
+  description: Periodically updates Civil Legal Advice Specialist Provider details
+  destination: Provider Identity Database
+- source: Legal Adviser Location Search API
+  description: uses
+  destination: postcodes.io
+- source: Management Information Team
+  description: Periodically downloads Civil Legal Advice Specialist Provider details
+  destination: Data Warehouse
+- source: Management Information Team
+  description: Periodically updates Civil Legal Advice Specialist Provider details
+  destination: Legal Adviser Location Search API
+- source: Operator
+  description: Talks to
+  destination: Citizen
+- source: Operator
+  description: Checks eligibility and data of incoming legal aid requests
+  destination: Civil Legal Advice Case Handling System
+- source: Operator
+  description: Talks to
+  destination: Civil Legal Advice Specialist Provider
 
 styles:
 - type: element
@@ -128,7 +176,11 @@ styles:
   background: '#28a197'
   color: '#ffffff'
 - type: element
+  tag: public
+  background: '#b2b3cf'
+  color: '#22245f'
+- type: element
   tag: web
   shape: WebBrowser
 
-size: A4_Landscape
+size: A3_Landscape
