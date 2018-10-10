@@ -1,0 +1,171 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Crime Online Billing
+description: Describes the software components and the actors involved in the crime online billing process within Legal Aid Agency, specifically in the "Get paid" service area.
+
+elements:
+- type: Person
+  name: Banks
+  tags: external
+  position: '6225,2050'
+- type: Person
+  name: Case Worker
+  position: '1625,1550'
+- type: Person
+  name: Legal Provider
+  tags: external
+  position: '2725,150'
+- type: Software System
+  name: CCMS Billing
+  description: application with many responsibilities including sollicitors payments and cash collections
+  tags: web,public
+  position: '5300,2200'
+- type: Software System
+  name: CMS
+  description: Third party CMS Software provided to legal firms
+  tags: web,external
+  position: '1900,900'
+- type: Software System
+  name: Claim for Crown Court Defence - CCCD
+  description: enables Legal Aid providers to claim online for crown court cases, helps Crime Caseworkers in claims assessment
+  tags: web,public
+  position: '2700,900'
+- type: Software System
+  name: Contract Work Administration - CWA
+  description: Holds list of contracted legal providers
+  tags: web,public
+  position: '4300,1600'
+- type: Software System
+  name: Corporate Information System - CIS
+  description: Core legacy case management system used for both civil and crime case management
+  position: '4300,2200'
+- type: Software System
+  name: Crown Court Litigator Fees - CCLF
+  description: LAA providers assessment tool for litigators claims
+  tags: web
+  position: '3400,2200'
+- type: Software System
+  name: Crown Court Remuneration - CCR
+  description: LAA providers assessment tool for advocates claims
+  tags: web
+  position: '2700,2200'
+- type: Software System
+  name: Integration Hub Job 1
+  description: 'null'
+  position: '3900,3000'
+- type: Software System
+  name: Integration Hub Job 2
+  description: 'null'
+  position: '4900,3000'
+- type: Software System
+  name: Laa Fee Calculator
+  description: Automated Fee Calculator for AGFS fixed fee claims
+  position: '3400,900'
+- type: Software System
+  name: Means Assessment & Administration Tool - MAAT
+  description: Process criminal legal aid applications in the Magistrates and Crown Courts
+  tags: web
+  position: '1600,2500'
+- type: Software System
+  name: Xhibit Live
+  description: Detailed records of hearings
+  tags: web,external
+  position: '400,2000'
+- type: Software System
+  name: Xhibit Portal
+  description: 'null'
+  tags: web,external
+  position: '800,2200'
+
+relationships:
+- source: Banks
+  description: pays
+  destination: Legal Provider
+- source: CCMS Billing
+  description: sets up direct debits
+  destination: Banks
+- source: CMS
+  description: forwards the claim to
+  destination: Claim for Crown Court Defence - CCCD
+- source: Case Worker
+  description: starts claim assessment
+  destination: Claim for Crown Court Defence - CCCD
+- source: Case Worker
+  description: prepares payments
+  destination: Contract Work Administration - CWA
+- source: Case Worker
+  description: performs claim assessment for LGFS claims
+  destination: Crown Court Litigator Fees - CCLF
+- source: Case Worker
+  description: performs claim assessment for AGFS claims
+  destination: Crown Court Remuneration - CCR
+- source: Case Worker
+  description: retrieves defendant details
+  destination: Means Assessment & Administration Tool - MAAT
+- source: Case Worker
+  description: retrieves hearings details from
+  destination: Xhibit Live
+- source: Case Worker
+  description: retrieves hearings details from
+  destination: Xhibit Portal
+- source: Claim for Crown Court Defence - CCCD
+  description: injects claims into
+  destination: Crown Court Litigator Fees - CCLF
+- source: Claim for Crown Court Defence - CCCD
+  description: injects claims into
+  destination: Crown Court Remuneration - CCR
+- source: Claim for Crown Court Defence - CCCD
+  description: uses
+  destination: Laa Fee Calculator
+- source: Contract Work Administration - CWA
+  description: injects payments into
+  destination: Corporate Information System - CIS
+- source: Integration Hub Job 1
+  description: injects claims into
+  destination: Corporate Information System - CIS
+- source: Integration Hub Job 1
+  description: injects claims into 1
+  destination: Corporate Information System - CIS
+- source: Integration Hub Job 1
+  description: takes claims from
+  destination: Crown Court Litigator Fees - CCLF
+- source: Integration Hub Job 1
+  description: takes claims from
+  destination: Crown Court Remuneration - CCR
+- source: Integration Hub Job 2
+  description: injects transactions into
+  destination: CCMS Billing
+- source: Integration Hub Job 2
+  description: takes transactions from
+  destination: Corporate Information System - CIS
+- source: Legal Provider
+  description: submits a claim via an API using a case management system
+  destination: CMS
+- source: Legal Provider
+  description: submits a claim
+  destination: Claim for Crown Court Defence - CCCD
+- source: Xhibit Portal
+  description: feeds hearings data into
+  destination: Means Assessment & Administration Tool - MAAT
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: public
+  background: '#b2b3cf'
+  color: '#22245f'
+
+size: A2_Landscape
