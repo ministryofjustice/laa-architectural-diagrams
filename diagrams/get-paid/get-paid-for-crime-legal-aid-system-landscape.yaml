@@ -20,21 +20,21 @@ elements:
   position: '2725,150'
 - type: Software System
   name: CCMS Billing
-  description: application with many responsibilities including sollicitors payments and cash collections
+  description: application with many responsibilities including solicitors payments and cash collections
   tags: web,public
   position: '5300,2200'
 - type: Software System
-  name: CMS
-  description: Third party CMS Software provided to legal firms
+  name: CMS - Content Management System
+  description: Third party CMS Software provided to legal firms. This component is modeled as one. In reality, there are several different ones provided by third party software vendors
   tags: web,external
   position: '1900,900'
 - type: Software System
   name: Claim for Crown Court Defence - CCCD
-  description: enables Legal Aid providers to claim online for crown court cases, helps Crime Caseworkers in claims assessment
+  description: Enables Legal Aid providers to claim online for crown court cases, helps Crime Caseworkers in claims assessment
   tags: web,public
   position: '2700,900'
 - type: Software System
-  name: Contract Work Administration - CWA
+  name: Contract Work and Administration - CWA
   description: Holds list of contracted legal providers
   tags: web,public
   position: '4300,1600'
@@ -44,12 +44,12 @@ elements:
   position: '4300,2200'
 - type: Software System
   name: Crown Court Litigator Fees - CCLF
-  description: LAA providers assessment tool for litigators claims
+  description: LAA case workers tool responsible for litigators claims assessment
   tags: web
   position: '3400,2200'
 - type: Software System
   name: Crown Court Remuneration - CCR
-  description: LAA providers assessment tool for advocates claims
+  description: LAA case workers tool responsible for advocates claims assessment
   tags: web
   position: '2700,2200'
 - type: Software System
@@ -61,8 +61,16 @@ elements:
   description: 'null'
   position: '4900,3000'
 - type: Software System
+  name: Integration Hub Job 3
+  description: 'null'
+  position: '2600,3000'
+- type: Software System
+  name: Integration Hub Job 4
+  description: 'null'
+  position: '1500,3000'
+- type: Software System
   name: Laa Fee Calculator
-  description: Automated Fee Calculator for AGFS fixed fee claims
+  description: Automated Fee Calculator for AGFS (Advocate Graduated fee scheme) fee claims
   position: '3400,900'
 - type: Software System
   name: Means Assessment & Administration Tool - MAAT
@@ -76,7 +84,7 @@ elements:
   position: '400,2000'
 - type: Software System
   name: Xhibit Portal
-  description: 'null'
+  description: Records of hearings (https://pportal.cjsonline.gov.uk/Secure/UnAuth.aspx)
   tags: web,external
   position: '800,2200'
 
@@ -87,7 +95,7 @@ relationships:
 - source: CCMS Billing
   description: sets up direct debits
   destination: Banks
-- source: CMS
+- source: CMS - Content Management System
   description: forwards the claim to
   destination: Claim for Crown Court Defence - CCCD
 - source: Case Worker
@@ -95,7 +103,7 @@ relationships:
   destination: Claim for Crown Court Defence - CCCD
 - source: Case Worker
   description: prepares payments
-  destination: Contract Work Administration - CWA
+  destination: Contract Work and Administration - CWA
 - source: Case Worker
   description: performs claim assessment for LGFS claims
   destination: Crown Court Litigator Fees - CCLF
@@ -120,14 +128,11 @@ relationships:
 - source: Claim for Crown Court Defence - CCCD
   description: uses
   destination: Laa Fee Calculator
-- source: Contract Work Administration - CWA
+- source: Contract Work and Administration - CWA
   description: injects payments into
   destination: Corporate Information System - CIS
 - source: Integration Hub Job 1
   description: injects claims into
-  destination: Corporate Information System - CIS
-- source: Integration Hub Job 1
-  description: injects claims into 1
   destination: Corporate Information System - CIS
 - source: Integration Hub Job 1
   description: takes claims from
@@ -141,9 +146,27 @@ relationships:
 - source: Integration Hub Job 2
   description: takes transactions from
   destination: Corporate Information System - CIS
+- source: Integration Hub Job 3
+  description: injects defendant data into
+  destination: Crown Court Litigator Fees - CCLF
+- source: Integration Hub Job 3
+  description: injects defendant data into
+  destination: Crown Court Remuneration - CCR
+- source: Integration Hub Job 3
+  description: takes defendant data from
+  destination: Means Assessment & Administration Tool - MAAT
+- source: Integration Hub Job 4
+  description: injects case data into
+  destination: Crown Court Litigator Fees - CCLF
+- source: Integration Hub Job 4
+  description: injects case data into
+  destination: Crown Court Remuneration - CCR
+- source: Integration Hub Job 4
+  description: takes case data from
+  destination: Xhibit Portal
 - source: Legal Provider
-  description: submits a claim via an API using a case management system
-  destination: CMS
+  description: submits a claim using a case management system
+  destination: CMS - Content Management System
 - source: Legal Provider
   description: submits a claim
   destination: Claim for Crown Court Defence - CCCD
