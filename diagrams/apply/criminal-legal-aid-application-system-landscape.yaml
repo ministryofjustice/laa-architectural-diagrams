@@ -1,0 +1,138 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Criminal Legal Aid Applications
+description: The system context diagram for Criminal Legal Aid
+
+elements:
+- type: Person
+  name: Caseworker (Crime Applications Team)
+  position: '2025,950'
+- type: Person
+  name: Provider (solicitor)
+  tags: external
+  position: '1125,350'
+- type: Software System
+  name: Benefit Checker
+  description: LAA Benefit Checker
+  position: '100,1000'
+- type: Software System
+  name: DWP Benefit Checker
+  description: DWP Benefit Checker
+  tags: external
+  position: '100,200'
+- type: Software System
+  name: InfoX
+  description: Information eXchange
+  position: '3600,2200'
+- type: Software System
+  name: LAA Portal
+  description: Oracle IDAM / SAML IdP, commonly known as "Portal"
+  position: '1900,400'
+- type: Software System
+  name: LIBRA
+  description: Magistrates Court system (HM Courts & Tribunals)
+  tags: external
+  position: '2800,800'
+- type: Software System
+  name: MAAT
+  description: Means Assessment Administration Tool
+  position: '2000,2200'
+- type: Software System
+  name: MAAT DB
+  description: Oracle database for MAAT, MLRA and InfoX
+  tags: database
+  position: '2000,3000'
+- type: Software System
+  name: MLRA
+  description: MAAT Libra Administration Tool
+  position: '2700,2200'
+- type: Software System
+  name: NOLASA
+  description: Not On Libra Autosearch System
+  position: '3200,3000'
+- type: Software System
+  name: Xhibit
+  description: Crown Court system (HM Courts & Tribunals)
+  tags: external
+  position: '3600,800'
+- type: Software System
+  name: eForms
+  position: '1300,2200'
+
+relationships:
+- source: Benefit Checker
+  description: Relays queries to DWP
+  destination: DWP Benefit Checker
+- source: Caseworker (Crime Applications Team)
+  description: searches Libra in order to match cases
+  destination: LIBRA
+- source: Caseworker (Crime Applications Team)
+  description: Assesses means and merits
+  destination: MAAT
+- source: Caseworker (Crime Applications Team)
+  description: accepts/rejects application
+  destination: eForms
+- source: InfoX
+  description: Search
+  destination: LIBRA
+- source: InfoX
+  destination: MAAT DB
+- source: LIBRA
+  description: Case updates
+  destination: InfoX
+- source: MAAT
+  destination: MAAT DB
+- source: MLRA
+  description: Libra API calls
+  destination: InfoX
+- source: MLRA
+  destination: MAAT DB
+- source: NOLASA
+  description: performs scheduled searches saved in Not-on-Libra queue
+  destination: InfoX
+- source: NOLASA
+  description: updates matched cases in Not-on-Libra queue
+  destination: MAAT DB
+- source: Provider (solicitor)
+  description: logs in
+  destination: LAA Portal
+- source: Provider (solicitor)
+  description: submits application
+  destination: eForms
+- source: Xhibit
+  description: Crown Court outcomes (via hub)
+  destination: MAAT
+- source: eForms
+  description: Checks if applicant receives passported benefit
+  destination: Benefit Checker
+- source: eForms
+  description: sends application details via Hub
+  destination: MAAT DB
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: public
+  background: '#b2b3cf'
+  color: '#22245f'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A3_Landscape
