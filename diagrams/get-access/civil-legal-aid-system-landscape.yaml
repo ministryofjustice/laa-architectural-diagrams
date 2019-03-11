@@ -34,7 +34,7 @@ elements:
   position: '2600,1100'
 - type: Software System
   name: Civil Legal Advice Backend
-  description: (CLA_backend)
+  description: (CLA_backend) https://fox.civillegaladvice.service.gov.uk/admin
   position: '2100,1600'
 - type: Software System
   name: Civil Legal Advice Case Handling System
@@ -75,6 +75,11 @@ elements:
   tags: external
   position: '700,400'
 - type: Software System
+  name: SendGrid
+  description: 3rd party system to send e-mails
+  tags: external
+  position: '2600,2300'
+- type: Software System
   name: postcodes.io
   description: Postcode lookup API for latitude/longitude conversion
   tags: external
@@ -87,6 +92,9 @@ relationships:
 - source: Check If You Can Get Legal Aid
   description: uses
   destination: Legal Adviser Location Search API
+- source: Check If You Can Get Legal Aid
+  description: Sends confirmation e-mails via
+  destination: SendGrid
 - source: Citizen
   description: Looking for legal aid
   destination: Check If You Can Get Legal Aid
