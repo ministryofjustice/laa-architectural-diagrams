@@ -54,6 +54,11 @@ elements:
 - type: Software System
   name: Find a Legal Adviser
   tags: web
+  position: '4300,400'
+- type: Software System
+  name: Ordnance Survey Places API
+  description: 3rd party address finder API
+  tags: external
   position: '4300,1000'
 - type: Software System
   name: Provider's Case Handling System
@@ -115,6 +120,9 @@ relationships:
 - source: cla_public
   description: Provides "which provider is nearest to my home" via
   destination: Find a Legal Adviser
+- source: cla_public
+  description: Looks up addresses for during the contact form
+  destination: Ordnance Survey Places API
 - source: cla_public
   description: Sends confirmation and notification e-mails to citizens via
   destination: SendGrid
