@@ -1,0 +1,152 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: Civil Legal Aid
+description: Describes the containers related to accessing civil legal aid
+
+elements:
+- type: Person
+  name: Citizen
+  description: Member of the public in England and Wales
+  tags: external
+  position: '3425,250'
+- type: Person
+  name: Civil Legal Advice Specialist Provider
+  tags: external
+  position: '525,950'
+- type: Person
+  name: Management Information Team
+  position: '1225,1550'
+- type: Person
+  name: Operator
+  description: Contact centre personnel who signposts members of the public in their legal help queries
+  position: '1225,250'
+- type: Software System
+  name: Civil Legal Aid
+  containers:
+  - type: Container
+    name: cla_backend
+    description: '[fox.civillegaladvice.service.gov.uk] Case Handling System Administration'
+    tags: web,focus
+    position: '2800,1600'
+  - type: Container
+    name: cla_frontend
+    description: '[cases.civillegaladvice.service.gov.uk] Case Handling System'
+    tags: web,focus
+    position: '2200,1000'
+  - type: Container
+    name: cla_public
+    description: '[checklegalaid.service.gov.uk] Public-facing website that allows people to self-assess for signposting or schedule callbacks'
+    tags: web,focus
+    position: '3400,1000'
+  - type: Container
+    name: Civil Legal Aid database
+    description: '[PostgreSQL] Source of truth for civil legal aid cases, callbacks, logins and specialist provider submissions'
+    tags: database,focus
+    position: '2200,2200'
+  - type: Container
+    name: Civil Legal Aid replica database
+    description: '[PostgreSQL] Replica database used for generating reports'
+    tags: database,focus
+    position: '3400,2200'
+- type: Software System
+  name: Find a Legal Adviser
+  tags: web
+  position: '4300,1000'
+- type: Software System
+  name: Provider's Case Handling System
+  tags: external
+  position: '500,400'
+- type: Software System
+  name: SendGrid
+  description: 3rd party system to send e-mails
+  tags: external
+  position: '4300,1600'
+
+relationships:
+- source: Citizen
+  description: Talks to
+  destination: Civil Legal Advice Specialist Provider
+- source: Citizen
+  description: Looking for legal aid
+  destination: cla_public
+- source: Civil Legal Advice Specialist Provider
+  description: Manages work via
+  destination: Provider's Case Handling System
+- source: Civil Legal Advice Specialist Provider
+  description: Logs in and uploads work report CSV to
+  destination: cla_frontend
+- source: Civil Legal Aid database
+  description: Replicates to
+  destination: Civil Legal Aid replica database
+- source: Management Information Team
+  description: Periodically downloads case detail reports
+  destination: cla_backend
+- source: Operator
+  description: Talks to
+  destination: Citizen
+- source: Operator
+  description: Talks to
+  destination: Civil Legal Advice Specialist Provider
+- source: Operator
+  description: Checks eligibility and data of incoming legal aid requests
+  destination: cla_frontend
+- source: cla_backend
+  description: Real-time updates and details via
+  destination: Civil Legal Aid database
+- source: cla_backend
+  description: Generates reports from
+  destination: Civil Legal Aid replica database
+- source: cla_backend
+  description: Sends confirmation and notification e-mails to citizens and providers via
+  destination: SendGrid
+- source: cla_frontend
+  description: Stores created and edited case, callback and submission details via
+  destination: cla_backend
+  vertices:
+  - '2550,1400'
+- source: cla_frontend
+  description: Provides operator and provider login functionality via
+  destination: cla_backend
+  vertices:
+  - '2850,1250'
+- source: cla_public
+  description: Provides "which provider is nearest to my home" via
+  destination: Find a Legal Adviser
+- source: cla_public
+  description: Sends confirmation and notification e-mails to citizens via
+  destination: SendGrid
+- source: cla_public
+  description: Stores entered case and callback details via
+  destination: cla_backend
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A3_Landscape
