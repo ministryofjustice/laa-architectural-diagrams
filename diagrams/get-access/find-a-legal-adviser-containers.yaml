@@ -1,0 +1,107 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: Find a Legal Adviser
+description: Describes the containers related to accessing find a legal adviser
+
+elements:
+- type: Person
+  name: Civil Legal Advice Specialist Provider
+  tags: external
+  position: '125,950'
+- type: Person
+  name: Management Information Team
+  position: '1825,50'
+- type: Person
+  name: Operator
+  description: Contact centre personnel who signposts members of the public in their legal help queries
+  position: '1025,50'
+- type: Software System
+  name: Civil Legal Aid
+  tags: web
+  position: '3000,100'
+- type: Software System
+  name: Find a Legal Adviser
+  containers:
+  - type: Container
+    name: fala
+    description: '[find-legal-advice.justice.gov.uk] Legal provider location search tool'
+    tags: web,focus
+    position: '1000,1000'
+  - type: Container
+    name: laa-legal-adviser-api
+    description: '[prod.laalaa.dsd.io] Legal provider location search API'
+    tags: web,focus
+    position: '1800,1000'
+  - type: Container
+    name: Message Queue
+    description: '[RabbitMQ] Used to distribute geolocation workload across different worker processes'
+    tags: focus
+    position: '2300,1600'
+  - type: Container
+    name: Provider Address Database
+    description: '[PostgreSQL with postgis] Stores provider address details with latitude and longitude coordinates and uploader login details'
+    tags: database,focus
+    position: '1300,1600'
+- type: Software System
+  name: postcodes.io
+  description: Postcode lookup API for latitude/longitude conversion
+  tags: external
+  position: '3000,1000'
+
+relationships:
+- source: Civil Legal Advice Specialist Provider
+  description: Looking for nearby legal advisers for citizens
+  destination: fala
+- source: Civil Legal Aid
+  description: Uses the API for provider address search
+  destination: laa-legal-adviser-api
+- source: Management Information Team
+  description: Periodically logs in and updates legal provider details
+  destination: laa-legal-adviser-api
+- source: Operator
+  description: Looking for nearby legal advisers for citizens
+  destination: fala
+- source: fala
+  description: Uses to provide search functionality
+  destination: laa-legal-adviser-api
+- source: laa-legal-adviser-api
+  description: Distributes postcode lookup tasks with
+  destination: Message Queue
+- source: laa-legal-adviser-api
+  description: Reads from and writes to
+  destination: Provider Address Database
+- source: laa-legal-adviser-api
+  description: Geolocates from postcodes during provider address refresh
+  destination: postcodes.io
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A4_Landscape
