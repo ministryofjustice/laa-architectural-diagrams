@@ -8,6 +8,11 @@ description: Describes the containers related to accessing find a legal adviser
 
 elements:
 - type: Person
+  name: Citizen
+  description: Member of the public in England and Wales
+  tags: external
+  position: '125,50'
+- type: Person
   name: Civil Legal Advice Specialist Provider
   tags: external
   position: '125,950'
@@ -52,6 +57,9 @@ elements:
   position: '3000,1000'
 
 relationships:
+- source: Citizen
+  description: Looking for nearby legal advisers
+  destination: fala
 - source: Civil Legal Advice Specialist Provider
   description: Looking for nearby legal advisers for citizens
   destination: fala
