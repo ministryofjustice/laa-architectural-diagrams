@@ -16,8 +16,11 @@ elements:
   tags: external
   position: '725,1650'
 - type: Person
+  name: Direct Services Team
+  position: '3925,2350'
+- type: Person
   name: Management Information Team
-  position: '3025,1650'
+  position: '3025,2350'
 - type: Person
   name: Operator
   description: Contact centre personnel who signposts members of the public in their legal help queries
@@ -78,12 +81,19 @@ relationships:
 - source: Civil Legal Aid
   description: Sends e-mails via
   destination: SendGrid
+- source: Direct Services Team
+  description: Periodically downloads case extract reports to propagate to management information systems
+  destination: Civil Legal Aid
+  vertices:
+  - '3500,2000'
+- source: Direct Services Team
+  description: Runs reports and views cases to manage the specialist provider and operator service contracts
+  destination: Civil Legal Aid
+  vertices:
+  - '3850,1750'
 - source: Find a Legal Adviser
   description: Geolocates from postcodes
   destination: postcodes.io
-- source: Management Information Team
-  description: Periodically downloads case details
-  destination: Civil Legal Aid
 - source: Management Information Team
   description: Periodically updates legal provider details
   destination: Find a Legal Adviser
