@@ -17,7 +17,7 @@ elements:
   tags: external
   position: '525,950'
 - type: Person
-  name: Management Information Team
+  name: Direct Services Team
   position: '1225,1550'
 - type: Person
   name: Operator
@@ -26,6 +26,16 @@ elements:
 - type: Software System
   name: Civil Legal Aid
   containers:
+  - type: Container
+    name: Civil Legal Aid database
+    description: '[PostgreSQL] Source of truth for civil legal aid cases, callbacks, logins and specialist provider submissions'
+    tags: database,focus
+    position: '2200,2200'
+  - type: Container
+    name: Civil Legal Aid replica database
+    description: '[PostgreSQL] Replica database used for generating reports'
+    tags: database,focus
+    position: '3400,2200'
   - type: Container
     name: cla_backend
     description: '[fox.civillegaladvice.service.gov.uk] Case Handling System Administration'
@@ -41,16 +51,6 @@ elements:
     description: '[checklegalaid.service.gov.uk] Public-facing website that allows people to self-assess for signposting or schedule callbacks'
     tags: web,focus
     position: '3400,1000'
-  - type: Container
-    name: Civil Legal Aid database
-    description: '[PostgreSQL] Source of truth for civil legal aid cases, callbacks, logins and specialist provider submissions'
-    tags: database,focus
-    position: '2200,2200'
-  - type: Container
-    name: Civil Legal Aid replica database
-    description: '[PostgreSQL] Replica database used for generating reports'
-    tags: database,focus
-    position: '3400,2200'
 - type: Software System
   name: Find a Legal Adviser
   tags: web
@@ -86,9 +86,19 @@ relationships:
 - source: Civil Legal Aid database
   description: Replicates to
   destination: Civil Legal Aid replica database
-- source: Management Information Team
-  description: Periodically downloads case detail reports
+- source: Direct Services Team
+  description: Runs reports to manage the specialist provider and operator service contracts
   destination: cla_backend
+  vertices:
+  - '2200,1600'
+- source: Direct Services Team
+  description: Periodically downloads case extract reports to propagate to management information systems
+  destination: cla_backend
+  vertices:
+  - '2200,1950'
+- source: Direct Services Team
+  description: Views cases to manage the specialist provider and operator service contracts
+  destination: cla_frontend
 - source: Operator
   description: Talks to
   destination: Citizen
