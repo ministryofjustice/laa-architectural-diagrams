@@ -39,6 +39,7 @@ elements:
   position: '1500,1000'
 - type: Software System
   name: Integration Hub
+  description: Integrates data between multiple systems using database connections, files and scheduled jobs
   position: '2400,1000'
 - type: Software System
   name: Portal
