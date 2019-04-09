@@ -46,6 +46,17 @@ elements:
   description: Single sign-on portal for some applications
   position: '2400,400'
 
+relationships:
+- source: Contracted Work and Administration
+  description: Notifies user detail changes using an Oracle Directory Integration Platform connection
+  destination: Portal
+- source: Integration Hub
+  description: User roles are extracted
+  destination: Contracted Work and Administration
+- source: Integration Hub
+  description: User roles are pushed
+  destination: Portal
+
 styles:
 - type: element
   tag: Element
