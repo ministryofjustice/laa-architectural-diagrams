@@ -3,73 +3,41 @@ links:
   Structurizr Express: https://structurizr.com/express
 ---
 type: System Landscape
-scope: Accessing Civil Legal Aid
+scope: 'CLA/FALA: Civil Legal Aid and Find a Legal Adviser'
 description: Describes the components related to accessing civil legal aid for members of the public
 
 elements:
 - type: Person
   name: Citizen
   tags: external
-  position: '3725,350'
+  position: '3025,250'
 - type: Person
   name: Civil Legal Advice Specialist Provider
   tags: external
-  position: '1525,350'
+  position: '725,1650'
 - type: Person
-  name: Contract Analyst
-  position: '725,750'
-- type: Person
-  name: First Line Support
-  position: '725,1250'
+  name: Direct Services Team
+  position: '3925,2350'
 - type: Person
   name: Management Information Team
-  position: '3225,2250'
+  position: '3025,2350'
 - type: Person
   name: Operator
-  position: '2625,50'
+  description: Contact centre personnel who signposts members of the public in their legal help queries
+  position: '2225,250'
 - type: Software System
-  name: Check If You Can Get Legal Aid
-  description: (CLA_public) https://checklegalaid.service.gov.uk/
-  tags: web,public
-  position: '2600,1100'
-- type: Software System
-  name: Civil Legal Advice Backend
-  description: (CLA_backend) https://fox.civillegaladvice.service.gov.uk/admin
-  position: '2100,1600'
-- type: Software System
-  name: Civil Legal Advice Case Handling System
-  description: (CLA_frontend) https://cases.civillegaladvice.service.gov.uk/
-  tags: web,public
-  position: '1500,1100'
-- type: Software System
-  name: Contract Work Assessment
-  description: (CWA) Source of truth for Civil Legal Advice Specialist Provider details (amongst other responsibilities)
-  position: '1000,3000'
-- type: Software System
-  name: Data Warehouse
-  description: (OBIEE) Collects data related to common concepts from various sources
-  tags: database
-  position: '3200,3000'
+  name: Civil Legal Aid
+  tags: web,focus
+  position: '3000,1000'
 - type: Software System
   name: Find a Legal Adviser
-  description: (FALA) https://find-legal-advice.justice.gov.uk/
-  tags: web,public
-  position: '3700,1100'
+  tags: web,focus
+  position: '2200,1700'
 - type: Software System
-  name: Hub Job
-  position: '2100,3000'
-- type: Software System
-  name: Legal Adviser Location Search API
-  description: (laa-legal-adviser-api)
-  position: '3200,1600'
-- type: Software System
-  name: Operator Identity Database
-  tags: database
-  position: '1600,2300'
-- type: Software System
-  name: Provider Identity Database
-  tags: database
-  position: '2100,2300'
+  name: Ordnance Survey Places API
+  description: 3rd party address finder API
+  tags: external
+  position: '4000,400'
 - type: Software System
   name: Provider's Case Handling System
   tags: external
@@ -78,101 +46,75 @@ elements:
   name: SendGrid
   description: 3rd party system to send e-mails
   tags: external
-  position: '2600,2300'
+  position: '4000,1000'
 - type: Software System
   name: postcodes.io
   description: Postcode lookup API for latitude/longitude conversion
   tags: external
-  position: '3700,2300'
+  position: '2200,2400'
 
 relationships:
-- source: Check If You Can Get Legal Aid
-  description: Registers incoming legal aid requests
-  destination: Civil Legal Advice Backend
-- source: Check If You Can Get Legal Aid
-  description: uses
-  destination: Legal Adviser Location Search API
-- source: Check If You Can Get Legal Aid
-  description: Sends confirmation e-mails via
-  destination: SendGrid
-- source: Citizen
-  description: Looking for legal aid
-  destination: Check If You Can Get Legal Aid
 - source: Citizen
   description: Talks to
   destination: Civil Legal Advice Specialist Provider
 - source: Citizen
+  description: Looking for legal aid
+  destination: Civil Legal Aid
+- source: Citizen
   description: Looking for nearby legal advisers
   destination: Find a Legal Adviser
-- source: Civil Legal Advice Backend
-  description: uses
-  destination: Operator Identity Database
-- source: Civil Legal Advice Backend
-  description: uses
-  destination: Provider Identity Database
-- source: Civil Legal Advice Case Handling System
-  description: Registers and updates incoming legal aid requests
-  destination: Civil Legal Advice Backend
 - source: Civil Legal Advice Specialist Provider
   description: Logs in and uploads work report CSV to
-  destination: Civil Legal Advice Case Handling System
+  destination: Civil Legal Aid
 - source: Civil Legal Advice Specialist Provider
   description: Looking for nearby legal advisers for citizens
   destination: Find a Legal Adviser
-  vertices:
-  - '3500,700'
 - source: Civil Legal Advice Specialist Provider
   description: Manages work via
   destination: Provider's Case Handling System
-- source: Contract Analyst
-  description: Periodically downloads reports
-  destination: Civil Legal Advice Case Handling System
+- source: Civil Legal Aid
+  description: Provides "which provider is nearest to my home" via
+  destination: Find a Legal Adviser
+- source: Civil Legal Aid
+  description: Looks up full addresses from postcodes
+  destination: Ordnance Survey Places API
+- source: Civil Legal Aid
+  description: Sends e-mails via
+  destination: SendGrid
+- source: Direct Services Team
+  description: Periodically downloads case extract reports to propagate to management information systems
+  destination: Civil Legal Aid
   vertices:
-  - '1300,1150'
-- source: Contract Analyst
-  description: Manages provider users
-  destination: Civil Legal Advice Case Handling System
+  - '3500,2000'
+- source: Direct Services Team
+  description: Runs reports and views cases to manage the specialist provider and operator service contracts
+  destination: Civil Legal Aid
   vertices:
-  - '1300,1000'
-- source: Contract Work Assessment
-  description: Periodically updates Civil Legal Advice Specialist Provider details
-  destination: Hub Job
+  - '3850,1750'
 - source: Find a Legal Adviser
-  description: uses
-  destination: Legal Adviser Location Search API
-- source: First Line Support
-  description: Manages provider and operator accounts
-  destination: Civil Legal Advice Case Handling System
-- source: Hub Job
-  description: Periodically updates Civil Legal Advice Specialist Provider details
-  destination: Data Warehouse
-- source: Hub Job
-  description: Periodically updates Civil Legal Advice Specialist Provider details
-  destination: Provider Identity Database
-- source: Legal Adviser Location Search API
-  description: uses
+  description: Geolocates from postcodes
   destination: postcodes.io
 - source: Management Information Team
-  description: Periodically downloads Civil Legal Advice Specialist Provider details
-  destination: Data Warehouse
-- source: Management Information Team
-  description: Periodically updates Civil Legal Advice Specialist Provider details
-  destination: Legal Adviser Location Search API
+  description: Periodically updates legal provider details
+  destination: Find a Legal Adviser
 - source: Operator
   description: Talks to
   destination: Citizen
 - source: Operator
-  description: Checks eligibility and data of incoming legal aid requests
-  destination: Civil Legal Advice Case Handling System
-- source: Operator
   description: Talks to
   destination: Civil Legal Advice Specialist Provider
+- source: Operator
+  description: Checks eligibility and data of incoming legal aid requests
+  destination: Civil Legal Aid
+- source: Operator
+  description: Looking for nearby legal advisers for citizens
+  destination: Find a Legal Adviser
 
 styles:
 - type: element
   tag: Element
-  background: '#5a5c92'
-  color: '#ffffff'
+  background: '#c9cadb'
+  color: '#25263c'
 - type: element
   tag: Person
   shape: Person
@@ -181,12 +123,16 @@ styles:
   shape: Cylinder
 - type: element
   tag: external
-  background: '#28a197'
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
   color: '#ffffff'
 - type: element
-  tag: public
-  background: '#b2b3cf'
-  color: '#22245f'
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
 - type: element
   tag: web
   shape: WebBrowser
