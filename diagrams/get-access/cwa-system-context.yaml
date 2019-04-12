@@ -9,44 +9,52 @@ description: Describes the components related to accessing Contracted Work and A
 elements:
 - type: Person
   name: Billing Team
-  position: '525,950'
+  position: '225,850'
 - type: Person
   name: Central Commissioning Team
-  position: '2025,1650'
+  position: '2225,2250'
 - type: Person
   name: Contract Management Team
-  position: '1525,1650'
+  position: '3225,2250'
 - type: Person
   name: Legal Provider
   tags: external
-  position: '525,250'
+  position: '225,250'
 - type: Person
   name: Live Service Team
-  position: '2525,1650'
+  position: '4225,2250'
 - type: Person
   name: Operational Assurance Team
-  position: '525,1650'
+  position: '225,2250'
 - type: Person
   name: Provider Records Team
-  position: '1025,1650'
+  position: '1225,2250'
 - type: Software System
   name: Client and Cost Management System
-  position: '1500,400'
+  position: '2200,400'
 - type: Software System
   name: Contracted Work and Administration
   description: Responsible for provider claims (in crime lower, family mediation, legal help), provider records, provider contract and schedules and identity and access management
   tags: focus
-  position: '1500,1000'
+  position: '2200,1000'
+- type: Software System
+  name: Data Warehouse
+  description: '[EDW0005] Contains all data for Management Information (MI) reports'
+  tags: database
+  position: '4200,1600'
 - type: Software System
   name: Integration Hub
   description: Integrates data between multiple systems using database connections, files and scheduled jobs
-  position: '2400,1000'
+  position: '4200,1000'
 - type: Software System
   name: Portal
   description: Single sign-on portal for some applications
-  position: '2400,400'
+  position: '4200,400'
 
 relationships:
+- source: Contracted Work and Administration
+  description: Change Data Capture (CDC) synchronises changes happened to the database
+  destination: Data Warehouse
 - source: Contracted Work and Administration
   description: Notifies user detail changes using an Oracle Directory Integration Platform connection
   destination: Portal
@@ -84,4 +92,4 @@ styles:
   tag: web
   shape: WebBrowser
 
-size: A4_Landscape
+size: A3_Landscape
