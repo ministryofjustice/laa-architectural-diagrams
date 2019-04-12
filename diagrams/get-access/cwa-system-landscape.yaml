@@ -1,0 +1,75 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Contracted Work and Administration (CWA)
+description: Describes the components related to accessing Contracted Work and Administration
+
+elements:
+- type: Person
+  name: Billing Team
+  position: '525,950'
+- type: Person
+  name: Central Commissioning Team
+  position: '2025,1650'
+- type: Person
+  name: Contract Management Team
+  position: '1525,1650'
+- type: Person
+  name: Legal Provider
+  tags: external
+  position: '525,250'
+- type: Person
+  name: Live Service Team
+  position: '2525,1650'
+- type: Person
+  name: Operational Assurance Team
+  position: '525,1650'
+- type: Person
+  name: Provider Records Team
+  position: '1025,1650'
+- type: Software System
+  name: Client and Cost Management System
+  position: '1500,400'
+- type: Software System
+  name: Contracted Work and Administration
+  description: Responsible for provider claims (in crime lower, family mediation, legal help), provider records, provider contract and schedules and identity and access management
+  tags: focus
+  position: '1500,1000'
+- type: Software System
+  name: Integration Hub
+  position: '2400,1000'
+- type: Software System
+  name: Portal
+  description: Single sign-on portal for some applications
+  position: '2400,400'
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A4_Landscape
