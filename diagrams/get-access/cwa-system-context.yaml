@@ -41,11 +41,11 @@ elements:
   name: Data Warehouse
   description: '[EDW0005] Contains all data for Management Information (MI) reports'
   tags: database
-  position: '4200,2200'
+  position: '3200,400'
 - type: Software System
   name: Integration Hub
   description: Integrates data between multiple systems using database connections, files and scheduled jobs
-  position: '4200,1600'
+  position: '4200,2200'
 - type: Software System
   name: Portal
   description: Single sign-on portal for some applications
@@ -62,10 +62,32 @@ relationships:
   description: Notifies user detail changes using an Oracle Directory Integration Platform connection
   destination: Portal
 - source: Integration Hub
-  description: User roles are extracted
+  description: Extracts user accounts, roles and attributes
   destination: Contracted Work and Administration
+  vertices:
+  - '3300,2450'
 - source: Integration Hub
-  description: User roles are pushed
+  description: Extracts provider data
+  destination: Contracted Work and Administration
+  vertices:
+  - '3400,2150'
+- source: Integration Hub
+  description: Extracts provider firm, office and site data
+  destination: Contracted Work and Administration
+  vertices:
+  - '3350,2300'
+- source: Integration Hub
+  description: Extracts payment request data
+  destination: Contracted Work and Administration
+  vertices:
+  - '3600,1800'
+- source: Integration Hub
+  description: Extracts bank account and bank account "uses" data
+  destination: Contracted Work and Administration
+  vertices:
+  - '3450,2000'
+- source: Integration Hub
+  description: Writes user accounts, roles
   destination: Portal
 - source: Legal Provider
   description: Submits claims for work done during their contract
