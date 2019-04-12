@@ -2,8 +2,8 @@ links:
   The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
   Structurizr Express: https://structurizr.com/express
 ---
-type: System Landscape
-scope: Contracted Work and Administration (CWA)
+type: System Context
+scope: Contracted Work and Administration
 description: Describes the components related to accessing Contracted Work and Administration
 
 elements:
