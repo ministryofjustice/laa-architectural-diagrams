@@ -67,6 +67,21 @@ relationships:
 - source: Integration Hub
   description: User roles are pushed
   destination: Portal
+- source: Legal Provider
+  description: Submits claims for work done during their contract
+  destination: Contracted Work and Administration
+  vertices:
+  - '1350,1100'
+- source: Legal Provider
+  description: Manages users for the firm
+  destination: Contracted Work and Administration
+  vertices:
+  - '1550,1000'
+- source: Legal Provider
+  description: Accepts their contract and schedules
+  destination: Contracted Work and Administration
+  vertices:
+  - '1200,1250'
 
 styles:
 - type: element
