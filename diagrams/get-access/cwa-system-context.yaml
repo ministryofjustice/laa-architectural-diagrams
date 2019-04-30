@@ -1,0 +1,180 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Context
+scope: Contracted Work and Administration
+description: Describes the components related to accessing Contracted Work and Administration
+
+elements:
+- type: Person
+  name: Billing Team
+  position: '225,1450'
+- type: Person
+  name: Central Commissioning Team
+  position: '2225,2750'
+- type: Person
+  name: Contract Management Team
+  position: '3225,2750'
+- type: Person
+  name: Legal Provider
+  tags: external
+  position: '225,250'
+- type: Person
+  name: Live Service Team
+  position: '225,2050'
+- type: Person
+  name: Operational Assurance Team
+  position: '225,2750'
+- type: Person
+  name: Provider Records Team
+  position: '1225,2750'
+- type: Person
+  name: Reconciliation Team
+  description: In reality, only one person works on this from the team, Nigel.
+  position: '4225,2750'
+- type: Software System
+  name: Client and Cost Management System
+  description: (CCMS) Processes and validates claims and payments for legal aid work.
+  position: '2200,400'
+- type: Software System
+  name: Contracted Work and Administration
+  description: (CWA) Responsible for provider claims (in crime lower, family mediation, legal help), provider records, provider contract and schedules and identity and access management
+  tags: focus
+  position: '2200,1600'
+- type: Software System
+  name: Corporate Information System
+  description: (CIS) Payment system
+  position: '4200,400'
+- type: Software System
+  name: Data Warehouse
+  description: (EDW005) Contains all data for Management Information (MI) reports
+  tags: database
+  position: '4200,2200'
+- type: Software System
+  name: Electronic Management Information
+  description: (ERIC/EMI) Shares Management Information (MI) with providers via the Financial Statement report.
+  position: '1200,400'
+- type: Software System
+  name: Means Assessment and Administration Tool
+  description: (MAAT) Used to process criminal legal aid applications in the Magistrates and Crown Courts.
+  position: '3200,400'
+- type: Software System
+  name: Portal
+  description: Single sign-on portal for some applications
+  position: '4200,1000'
+- type: Software System
+  name: eForms
+  description: Electronic form submission. Historical paper forms digitised and made availalable to legal providers.
+  position: '4200,1600'
+
+relationships:
+- source: Client and Cost Management System
+  description: Looks up provider contracts via direct database connection
+  destination: Contracted Work and Administration
+  vertices:
+  - '2250,1150'
+- source: Contracted Work and Administration
+  description: |-
+    Internal users, their roles and securing attributes
+
+    Provider users, bank accounts, contracts, office details
+
+    ^ all the above copied
+  destination: Client and Cost Management System
+  vertices:
+  - '2600,1100'
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Provider data (account number, address, contact, VAT, contract "flags") copied
+  destination: Corporate Information System
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Change Data Capture (CDC) store changes to the source (CWA) data
+  destination: Data Warehouse
+  vertices:
+  - '3450,2100'
+- source: Contracted Work and Administration
+  description: Periodically tiggers CDC changes to be processed
+  destination: Data Warehouse
+  vertices:
+  - '3450,1950'
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Provider users, provider roles and provider office data copied
+  destination: Electronic Management Information
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Provider data (account number, address, contact) copied
+  destination: Means Assessment and Administration Tool
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Notifies user detail changes using an Oracle Directory Integration Platform connection
+  destination: Portal
+  vertices:
+  - '3450,1550'
+- source: Contracted Work and Administration
+  description: User accounts, attributes and their roles copied
+  destination: Portal
+  vertices:
+  - '3400,1400'
+  tags: via-hub
+- source: Contracted Work and Administration
+  description: Provider details, provider user accounts and LAA user accounts with eForms roles copied
+  destination: eForms
+  tags: via-hub
+- source: Legal Provider
+  description: Submits claims for work done during their contract
+  destination: Contracted Work and Administration
+  vertices:
+  - '1350,1100'
+- source: Legal Provider
+  description: Manages users for the firm
+  destination: Contracted Work and Administration
+  vertices:
+  - '1550,1000'
+- source: Legal Provider
+  description: Accepts their contract and schedules
+  destination: Contracted Work and Administration
+  vertices:
+  - '1200,1250'
+- source: Reconciliation Team
+  description: Uses payment data to prepare it to be uploaded to the payment system (CIS)
+  destination: Contracted Work and Administration
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+- type: relationship
+  tag: Relationship
+  width: '300'
+- type: relationship
+  tag: via-hub
+  color: '#c9cadb'
+  dashed: 'false'
+  width: '300'
+
+size: A3_Landscape
