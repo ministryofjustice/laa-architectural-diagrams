@@ -20,7 +20,7 @@ Facts in favour of CircleCI:
 Given the above context, we feel that defaulting to CircleCI is a sensible decision as it has the following benefits:
 
 * Contributing to applications across LAA Digital will not require learning another CI tool.
-* Support from many teams over `#circleci-users` Slack channel.
+* Support from many teams over [`#circleci-users`][circleci-users-slack] Slack channel.
 * Sharing similar code, for example, tagging and pushing Docker images to Elastic Container Registry (ECR) and deploying
   to Cloud Platform's Kubernetes platform.
 
@@ -41,3 +41,5 @@ The **default** choice of continuous integration service in the LAA Digital team
 New jobs and significant changes should migrate to CircleCI.
 
 **New** LAA applications should start with CircleCI as a default choice unless there is a compelling reason otherwise.
+
+[circleci-users-slack]: https://mojdt.slack.com/messages/CCSD5F397
