@@ -37,9 +37,16 @@ The **default** choice of continuous integration service in the LAA Digital team
 
 ## Consequences
 
+### Adoption
+
 **Existing** LAA repositories using other CI services may continue using them until a change is necessary.
 New jobs and significant changes should migrate to CircleCI.
 
 **New** LAA applications should start with CircleCI as a default choice unless there is a compelling reason otherwise.
+
+### Monitoring
+
+In the case of long job **queues** building up, please contact [`#circleci-users`][circleci-users-slack] for support.
+The people in that group will help with mitigating the delays, if possible.
 
 [circleci-users-slack]: https://mojdt.slack.com/messages/CCSD5F397
