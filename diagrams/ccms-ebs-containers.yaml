@@ -1,0 +1,145 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: Client Cost Management System
+description: The Provider User Interface within the Client Cost Management System (CCMS)
+
+elements:
+- type: Person
+  name: Provider or Caseworker
+  description: Civil Legal Aid Provider, or a Caseworker who is amending an application
+  tags: external
+  position: '125,50'
+- type: Software System
+  name: Client Cost Management System
+  containers:
+  - type: Container
+    name: Connector
+    description: Connects OWD and TDS
+    technology: Spring
+    position: '800,1600'
+  - type: Container
+    name: EBS Database
+    description: Stores completed applications
+    technology: Oracle Database
+    position: '2000,2200'
+  - type: Container
+    name: Oracle E-Business Suite
+    description: Workflow manager for accepting or rejecting applications
+    position: '1600,1800'
+  - type: Container
+    name: Oracle HTTP Server
+    description: Web Server
+    position: '800,600'
+  - type: Container
+    name: Oracle Policy Automation
+    description: Stores business rules
+    position: '100,1100'
+  - type: Container
+    name: Oracle Service Oriented Architecture
+    description: Connects E-Business Suite to other components and systems
+    position: '1600,1300'
+  - type: Container
+    name: Oracle Web Determinations
+    description: Dynamically generates interview questions based on business rules
+    position: '800,1100'
+  - type: Container
+    name: Provider User Interface
+    description: Collects information for a legal aid application
+    technology: Spring, ROOF, Oracle WebLogic
+    position: '1600,800'
+  - type: Container
+    name: Temporary Data Store
+    description: Stores incomplete applications
+    technology: Oracle Database
+    position: '800,2200'
+- type: Software System
+  name: Portal
+  description: Website providing external access to LAA applications
+  tags: external
+  position: '2000,100'
+
+relationships:
+- source: Connector
+  description: Writes application data to
+  destination: Temporary Data Store
+- source: Oracle E-Business Suite
+  description: Reads and writes to
+  destination: EBS Database
+- source: Oracle HTTP Server
+  description: Serves forms to render in an iframe using
+  destination: Oracle Web Determinations
+  technology: HTTP
+- source: Oracle HTTP Server
+  description: Checks the SSO cookie
+  destination: Portal
+  technology: mod_osso
+- source: Oracle HTTP Server
+  description: Forwards requests and sets Proxy-Remote-User header
+  destination: Provider User Interface
+  technology: HTTP
+- source: Oracle Service Oriented Architecture
+  description: Writes submitted applications to
+  destination: Oracle E-Business Suite
+  technology: SOAP
+- source: Oracle Web Determinations
+  description: Sends application data to
+  destination: Connector
+  technology: HTTP
+- source: Oracle Web Determinations
+  description: Applies rules from
+  destination: Oracle Policy Automation
+- source: Portal
+  description: Provides users for
+  destination: EBS Database
+  tags: via-hub
+- source: Provider User Interface
+  description: Writes submitted applications to
+  destination: Oracle Service Oriented Architecture
+  technology: SOAP
+- source: Provider User Interface
+  description: Reads and writes data to
+  destination: Temporary Data Store
+  vertices:
+  - '1600,1200'
+  - '1300,1950'
+- source: Provider or Caseworker
+  description: Completes applications
+  destination: Oracle HTTP Server
+  technology: HTTP
+- source: Provider or Caseworker
+  description: Logs in via
+  destination: Portal
+  technology: Single Sign On via Oracle Access Manager
+- source: Temporary Data Store
+  description: Reads data from
+  destination: EBS Database
+  technology: Shared database schema
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+- type: relationship
+  tag: via-hub
+  color: '#c9cadb'
+  dashed: 'false'
+  width: '300'
+
+size: A4_Portrait
