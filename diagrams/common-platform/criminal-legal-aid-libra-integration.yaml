@@ -1,0 +1,103 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Criminal Legal Aid Libra Integration
+description: The system context diagram for Criminal Legal Aid Libra integration
+
+elements:
+- type: Person
+  name: Caseworker (Crime Applications Team)
+  position: '2625,250'
+- type: Person
+  name: Provider (solicitor)
+  tags: external
+  position: '625,350'
+- type: Software System
+  name: InfoX
+  description: Information eXchange
+  position: '2600,2100'
+- type: Software System
+  name: LIBRA
+  description: Magistrates Court system (HM Courts & Tribunals)
+  tags: external
+  position: '2600,2800'
+- type: Software System
+  name: MAAT
+  description: Means Assessment Administration Tool
+  position: '2600,1200'
+- type: Software System
+  name: MAAT DB
+  description: Oracle database for MAAT, MLRA and InfoX
+  tags: database
+  position: '1600,1300'
+- type: Software System
+  name: MLRA
+  description: MAAT Libra Administration Tool
+  position: '2600,1500'
+- type: Software System
+  name: NOLASA
+  description: Not On Libra Autosearch System
+  position: '1600,2100'
+- type: Software System
+  name: eForms
+  position: '1600,400'
+
+relationships:
+- source: Caseworker (Crime Applications Team)
+  description: Assesses means and merits
+  destination: MAAT
+- source: Caseworker (Crime Applications Team)
+  description: accepts/rejects application
+  destination: eForms
+- source: InfoX
+  description: Search
+  destination: LIBRA
+- source: LIBRA
+  description: Case updates
+  destination: InfoX
+- source: MAAT
+  destination: MAAT DB
+- source: MLRA
+  description: Libra API calls
+  destination: InfoX
+- source: MLRA
+  destination: MAAT DB
+- source: NOLASA
+  description: performs scheduled searches saved in Not-on-Libra queue
+  destination: InfoX
+- source: NOLASA
+  description: updates matched cases in Not-on-Libra queue
+  destination: MAAT DB
+- source: Provider (solicitor)
+  description: submits application
+  destination: eForms
+- source: eForms
+  description: sends application details via Hub
+  destination: MAAT DB
+
+styles:
+- type: element
+  tag: Element
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: public
+  background: '#b2b3cf'
+  color: '#22245f'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A3_Landscape
