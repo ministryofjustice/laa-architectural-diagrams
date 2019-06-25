@@ -1,0 +1,197 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Context
+scope: Portal
+description: Describes the components related to accessing the Portal and integrated applications
+
+elements:
+- type: Person
+  name: Customer Services Team
+  position: '225,1750'
+- type: Person
+  name: Internal Portal Applications USers
+  position: '225,1250'
+- type: Person
+  name: Legal Provider
+  tags: external
+  position: '225,250'
+- type: Person
+  name: Live Service Team
+  position: '225,2250'
+- type: Software System
+  name: Client and Cost Management System
+  description: (CCMS) Processes and validates claims and payments for legal aid work.
+  position: '1600,300'
+- type: Software System
+  name: Contracted Work and Administration
+  description: (CWA) Responsible for provider claims (in crime lower, family mediation, legal help), provider records, provider contract and schedules and identity and access management
+  position: '1700,2400'
+- type: Software System
+  name: Crown Court Litigator's Fee
+  description: (CCLF) Legal aid providers make Crown Court Litigator's Fee Claims and associated disbursements
+  position: '2400,300'
+- type: Software System
+  name: Crown Court Remuneration
+  description: (CCR)
+  position: '3200,300'
+- type: Software System
+  name: Electronic Management Information
+  description: (ERIC/EMI) Shares Management Information (MI) with providers via the Financial Statement report.
+  position: '3200,2200'
+- type: Software System
+  name: Oracle Business Intelligence Enterprise Edition
+  description: (OBIEE) Data analytics tool
+  position: '3200,900'
+- type: Software System
+  name: Portal
+  description: Single sign-on portal for some applications
+  tags: focus
+  position: '1700,1400'
+- type: Software System
+  name: eForms
+  description: Electronic form submission. Historical paper forms digitised and made availalable to legal providers.
+  position: '3200,1500'
+
+relationships:
+- source: Contracted Work and Administration
+  description: New users and changes to user details pushed
+  destination: Portal
+  technology: (DIP) Oracle Directory Integration Platform connection
+  vertices:
+  - '1500,2050'
+- source: Contracted Work and Administration
+  description: User accounts, attributes and their roles copied
+  destination: Portal
+  technology: HUB Job
+  vertices:
+  - '2250,2050'
+  tags: via-hub
+- source: Customer Services Team
+  description: Reset user passwords
+  destination: Portal
+- source: Internal Portal Applications USers
+  description: Reset password using forgotten password link
+  destination: Portal
+  vertices:
+  - '1150,1550'
+- source: Internal Portal Applications USers
+  description: Manage personal security questions
+  destination: Portal
+  vertices:
+  - '1150,1650'
+- source: Internal Portal Applications USers
+  description: Authenticate to gain access to integrated applications
+  destination: Portal
+  vertices:
+  - '1150,1450'
+- source: Legal Provider
+  description: Authenticate to gain access to integrated applications
+  destination: Portal
+  vertices:
+  - '1500,1000'
+- source: Legal Provider
+  description: Reset password using forgotten password link
+  destination: Portal
+  vertices:
+  - '1300,1100'
+- source: Legal Provider
+  description: Manage personal security questions
+  destination: Portal
+  vertices:
+  - '1250,1350'
+- source: Live Service Team
+  description: Reset user passwords
+  destination: Portal
+- source: Oracle Business Intelligence Enterprise Edition
+  description: Authorisation
+  destination: Portal
+  technology: LDAP (Lightweight Directory Access Protocol)
+  vertices:
+  - '2850,1500'
+- source: Portal
+  description: Authentication to internal system (EBS - E-Business Suite)
+  destination: Client and Cost Management System
+  technology: Oracle AccessGate
+  vertices:
+  - '1650,800'
+- source: Portal
+  description: Authentication to external system (PUI - Provider User Interface)
+  destination: Client and Cost Management System
+  technology: OSSO (Oracle Single Sign On)
+  vertices:
+  - '2150,800'
+- source: Portal
+  description: Authentication
+  destination: Contracted Work and Administration
+  technology: Oracle AccessGate
+  vertices:
+  - '1900,1950'
+- source: Portal
+  description: Authentication
+  destination: Crown Court Litigator's Fee
+  technology: SAML (Security Assertion Markup Language)
+  vertices:
+  - '2400,1100'
+- source: Portal
+  description: Authentication
+  destination: Crown Court Remuneration
+  technology: SAML (Security Assertion Markup Language)
+  vertices:
+  - '2800,1200'
+- source: Portal
+  description: Authentication
+  destination: Electronic Management Information
+  technology: Oracle Webgate
+  vertices:
+  - '2650,2050'
+- source: Portal
+  description: Authentication
+  destination: Oracle Business Intelligence Enterprise Edition
+  technology: Oracle Webgate
+  vertices:
+  - '2850,1350'
+- source: Portal
+  description: Authentication
+  destination: eForms
+  technology: SAML (Security Assertion Markup Language)
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: Software System
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+- type: relationship
+  tag: Relationship
+  width: '300'
+- type: relationship
+  tag: via-hub
+  color: '#c9cadb'
+  dashed: 'false'
+  width: '300'
+
+size: A3_Landscape
