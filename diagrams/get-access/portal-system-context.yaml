@@ -111,13 +111,13 @@ relationships:
   vertices:
   - '2850,1500'
 - source: Portal
-  description: Authentication to internal system (EBS - E-Business Suite)
+  description: Authentication for internal users (EBS - E-Business Suite)
   destination: Client and Cost Management System
   technology: Oracle AccessGate
   vertices:
   - '1650,800'
 - source: Portal
-  description: Authentication to external system (PUI - Provider User Interface)
+  description: Authentication for external users (PUI - Provider User Interface)
   destination: Client and Cost Management System
   technology: OSSO (Oracle Single Sign On)
   vertices:
