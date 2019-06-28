@@ -15,6 +15,7 @@ to support these questions:
 | --- | --- |
 | <img src="civil-legal-aid-system-landscape.png" width="280"/> | Shows the context of the Civil Legal Aid (CLA) and Find a Legal Adviser (FALA) systems. |
 | <img src="cwa-system-context.png" width="280"/> | Shows the context of the Contracted Work and Adminstration (CWA) system. |
+| <img src="portal-system-context.png" width="280"/> | Shows the context of the Portal system. |
 
 ## Container diagrams
 
