@@ -61,6 +61,13 @@ It is difficult to answer the following questions:
 
 TBC; identify git sha for deployments; establish an easy way to roll forward
 
+### Related literature
+
+- Immutable architecture?
+- [Build, release, run (12factor.net)](https://12factor.net/build-release-run)
+- [Schema migration (wikipedia.org)](https://en.wikipedia.org/wiki/Schema_migration)
+- [Evolutionary Database Design (martinfowler.com)](https://martinfowler.com/articles/evodb.html)
+
 ## Consequences
 
 TBC
