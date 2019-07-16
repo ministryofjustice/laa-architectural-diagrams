@@ -13,7 +13,8 @@ These applications currently follow **one or more** of the following practices:
 
 Most of these applications have one or more of the following:
 
-- Release scripts: scripts that we execute during the release. These files refer to code files in the repository.
+- Release scripts: scripts that we execute during the release. These files refer to database code files (Oracle PL/SQL (`.pks`, `.pkb`),
+  Oracle Loader DaTa (`.ldt`), etc.) in the repository.
 - Release instructions: Word documents or plaintext instructions for the Database Administrator (DBA) on what to do during the release.
 
 We add these for every release.
