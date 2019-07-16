@@ -64,8 +64,22 @@ TBC; identify git sha for deployments; establish an easy way to roll forward
 ### Related literature
 
 - [Build, release, run (12factor.net)](https://12factor.net/build-release-run)
-- [Schema migration (wikipedia.org)](https://en.wikipedia.org/wiki/Schema_migration)
+  > The twelve-factor app uses strict separation between the build, release, and run stages.
+  >
+  > For example, it is impossible to make changes to the code at runtime, since there is no way
+  > to propagate those changes back to the build stage.
+- [DevOps Culture (martinfowler.com)](https://martinfowler.com/bliki/DevOpsCulture.html)
+  > If a development team shares the responsibility of looking after a system over the course of its lifetime,
+  > they are able to share the operations staff’s pain and so identify ways to simplify deployment and maintenance
+- [Continuous Delivery (martinfowler.com)](https://martinfowler.com/bliki/ContinuousDelivery.html)
+  > You’re doing continuous delivery when [...] you can perform push-button deployments of any version of the
+  > software to any environment on demand
 - [Evolutionary Database Design (martinfowler.com)](https://martinfowler.com/articles/evodb.html)
+  > Developers continuously integrate database changes
+  >
+  > [...] The steps above are just about treating the database code as another piece of source code.
+  > As such the database code - DDL, DML, Data, views, triggers, stored procedures - is kept under
+  > configuration management in the same way as the source code.
 
 ## Consequences
 
