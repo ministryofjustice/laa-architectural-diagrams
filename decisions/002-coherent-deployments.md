@@ -60,7 +60,31 @@ It is difficult to answer the following questions:
 
 ## Proposal
 
-TBC; identify git sha for deployments; establish an easy way to roll forward
+:raising_hand: **Note**: Please see the definition of "changes" below.
+
+We propose the following checklist:
+
+| Item | Item reversed |
+| --- | --- |
+| Outside development environments, changes can **only** be applied by putting them through version control. | Changes **cannot** be made to non-development environments without version control updates. |
+| [wip] to capture "deployment action outside the servers"<br/>Outside development environments, changes can be applied **without** the applying user logging into the servers. | Users **cannot** log in to application servers or databases to apply changes. |
+| [wip] to capture "git sha -> build -> release"<br/>Outside development environments, changes can **only** be applied from a [thing] associated with a git commit. | **Every** change can be tied back to a git commit. |
+
+### Defining "changes"
+
+"Changes" include **all** kinds of **typical** **code** changes.
+Data is outside the scope of this document.
+
+For practical purposes, we recommend treating the different types of changes as different work.
+The steps to apply Java changes are different than applying PL/SQL changes.
+
+### Assessment
+
+Teams should
+
+- assess what kinds of "changes" do they have for an application;
+- assess where they are on this checklist;
+- and collaborate with their product owner and operations team to create a way forward.
 
 ### Related literature
 
