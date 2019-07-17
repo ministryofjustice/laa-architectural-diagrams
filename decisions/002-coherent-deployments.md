@@ -72,8 +72,16 @@ We propose the following checklist:
 
 ### Defining "changes"
 
-"Changes" include **all** kinds of **typical** **code** changes.
-Data is outside the scope of this document.
+"Changes" typically include:
+
+- Changes to source code resulting in application behaviour change, for example, Java, Ruby, PL/SQL, HTML, CSS and so on.
+- Changes to categorical data which the users cannot change, for example, a list of allowed codes.
+- Changes to schemas or structures, for example, database schema migrations for relational databases.
+
+"Changes" do *not* typically include:
+
+- Corrections to user-created production data.
+- Additions to production data that could be created by users.
 
 For practical purposes, we recommend treating the different types of changes as different work.
 The steps to apply Java changes are different than applying PL/SQL changes.
