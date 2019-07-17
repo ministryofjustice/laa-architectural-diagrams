@@ -3,6 +3,19 @@
 The documentation here uses the [C4 model][c4model] by [Simon Brown][simonbrown].
 We use the [FC4 toolset][fc4-toolset] to normalise the source of C4 diagrams authored with [Structurizr Express][se].
 
+## Editing
+* Install and setup the fc4 tool https://fundingcircle.github.io/fc4-framework/tool/#setup
+
+*The following helped in installing the java runtime required for this tool.*
+```
+brew update
+brew tap homebrew/cask-versions
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk11-jre
+```
+
+* Follow [this workflow](https://fundingcircle.github.io/fc4-framework/methodology/authoring_workflow.html#optional-using-structurizr-express-for-graphical-editing) to make changes to the yaml files and to generate images
+
 ## Requirements
 
 Image files in this repository are tracked through [Git Large File Storage][git-lfs].
