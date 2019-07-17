@@ -60,15 +60,13 @@ It is difficult to answer the following questions:
 
 ## Proposal
 
-:raising_hand: **Note**: Please see the definition of "changes" below.
+We propose the following checklist for **non-development** environments:
 
-We propose the following checklist:
-
-| Item | Item reversed |
+| Item | Expressed as a negation |
 | --- | --- |
-| Outside development environments, changes can **only** be applied by putting them through version control. | Changes **cannot** be made to non-development environments without version control updates. |
-| [wip] to capture "deployment action outside the servers"<br/>Outside development environments, changes can be applied **without** the applying user logging into the servers. | Users **cannot** log in to application servers or databases to apply changes. |
-| [wip] to capture "git sha -> build -> release"<br/>Outside development environments, changes can **only** be applied from a [thing] associated with a git commit. | **Every** change can be tied back to a git commit. |
+| [Changes](#defining-changes) can **only** be applied by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
+| [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases. | Users **cannot** log in application servers or databases to apply [changes](#defining-changes). |
+| [wip] something to capture the benefits of builds/artifacts, to represent the entire application (we deploy everything, not patches)
 
 ### Defining "changes"
 
