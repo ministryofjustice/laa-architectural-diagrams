@@ -99,18 +99,31 @@ Teams should
   >
   > For example, it is impossible to make changes to the code at runtime, since there is no way
   > to propagate those changes back to the build stage.
+
+- [Release It! 2nd Edition](https://pragprog.com/book/mnee2/release-it-second-edition), Chapter 8, "Code"
+  > [...] making sure that you know exactly what goes into the code on the instance.
+  > It is vital to establish a strong “chain of custody” that stretches from the developer through to the
+  > production instance. It must be impossible for an unauthorized party to sneak code into your system.
+
 - [DevOps Culture (martinfowler.com)](https://martinfowler.com/bliki/DevOpsCulture.html)
   > If a development team shares the responsibility of looking after a system over the course of its lifetime,
   > they are able to share the operations staff’s pain and so identify ways to simplify deployment and maintenance
+
 - [Continuous Delivery (martinfowler.com)](https://martinfowler.com/bliki/ContinuousDelivery.html)
   > You’re doing continuous delivery when [...] you can perform push-button deployments of any version of the
   > software to any environment on demand
+
 - [Evolutionary Database Design (martinfowler.com)](https://martinfowler.com/articles/evodb.html)
   > Developers continuously integrate database changes
   >
   > [...] The steps above are just about treating the database code as another piece of source code.
   > As such the database code - DDL, DML, Data, views, triggers, stored procedures - is kept under
   > configuration management in the same way as the source code.
+
+- [97 Things Every Software Architect Should Know](https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X), Chapter 86, "Control the Data, Not Just the Code"
+  > You need to be able to build the entire application, including the database, as one unit.
+  > Make data and schema management a seamless part of your automated build and testing process early on and
+  > include an undo button; it will pay large dividends.
 
 ## Consequences
 
