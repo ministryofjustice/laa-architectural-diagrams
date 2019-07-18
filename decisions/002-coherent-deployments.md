@@ -129,4 +129,8 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
 
 ## Consequences
 
-TBC
+- We can deploy our applications as a whole with automation tools, ensuring we can reliably release any time.
+- We can answer "What version of this application is currently running on this environment?", making it easier
+  to prepare environments for testing or demos.
+- After adhering to the above checklist, we can deploy subsequent revisions of our applications on-demand and
+  we can expect the deployed behaviour to match the revision's behaviour.
