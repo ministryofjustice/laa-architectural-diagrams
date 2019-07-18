@@ -92,6 +92,8 @@ Teams should
 - assess where they are on this checklist;
 - and collaborate with their product owner and operations team to create a way forward.
 
+We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d/1oveCM853tk602N6-BYaxRgUV8eB2jfUnkQmaBYzbXog/edit?usp=sharing) as a starting point, in case it's useful.
+
 ### Related literature
 
 - [Build, release, run (12factor.net)](https://12factor.net/build-release-run)
