@@ -66,7 +66,7 @@ We propose the following checklist for **non-development** environments:
 | --- | --- |
 | [Changes](#defining-changes) can **only** be applied by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
 | [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases. | Users **cannot** log in application servers or databases to apply [changes](#defining-changes). |
-| [wip] something to capture the benefits of builds/artifacts, to represent the entire application (we deploy everything, not patches)
+| [Changes](#defining-changes) are applied or rolled back together. | It is impossible to deploy a version and have artifacts from earlier deployments still alive. |
 
 ### Defining "changes"
 
