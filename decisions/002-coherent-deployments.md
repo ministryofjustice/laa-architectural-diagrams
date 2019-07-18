@@ -13,8 +13,8 @@ These applications currently follow **one or more** of the following practices:
 
 Most of these applications have one or more of the following:
 
-- Release scripts: scripts that we execute during the release. These files refer to database code files (Oracle PL/SQL (`.pks`, `.pkb`),
-  Oracle Loader DaTa (`.ldt`), etc.) in the repository.
+- Release scripts: scripts that we execute during the release. These files, in turn, refer to database code files (Oracle PL/SQL (`.pks`, `.pkb`),
+  Oracle Loader DaTa (`.ldt`) and others) in the repository.
 - Release instructions: Word documents or plaintext instructions for the Database Administrator (DBA) on what to do during the release.
 
 We add these for every release.
@@ -64,15 +64,15 @@ We propose the following checklist for **non-development** environments:
 
 | Item | Expressed as a negation |
 | --- | --- |
-| [Changes](#defining-changes) can **only** be applied by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
+| We can **only** apply [changes](#defining-changes) by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
 | [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases. | Users **cannot** log in application servers or databases to apply [changes](#defining-changes). |
-| [Changes](#defining-changes) are applied or rolled back together. | It is impossible to deploy a version and have artifacts from earlier deployments still alive. |
+| [Changes](#defining-changes) are applied or rolled back together. | It is impossible to deploy a version and have artefacts from earlier deployments still alive. |
 
 ### Defining "changes"
 
 "Changes" typically include:
 
-- Changes to source code resulting in application behaviour change, for example, Java, Ruby, PL/SQL, HTML, CSS and so on.
+- Changes to source code resulting in application behaviour change, for example, Java, Ruby, PL/SQL, HTML, CSS, and similar.
 - Changes to categorical data which the users cannot change, for example, a list of allowed codes.
 - Changes to schemas or structures, for example, database schema migrations for relational databases.
 
@@ -90,7 +90,7 @@ Teams should
 
 - assess what kinds of "changes" do they have for an application;
 - assess where they are on this checklist;
-- and collaborate with their product owner and operations team to create a way forward.
+- collaborate with their product owner and operations team to create a way forward.
 
 We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d/1oveCM853tk602N6-BYaxRgUV8eB2jfUnkQmaBYzbXog/edit?usp=sharing) as a starting point, in case it's useful.
 
@@ -122,7 +122,7 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
   > As such the database code - DDL, DML, Data, views, triggers, stored procedures - is kept under
   > configuration management in the same way as the source code.
 
-- [97 Things Every Software Architect Should Know](https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X), Chapter 86, "Control the Data, Not Just the Code"
+- [97 Things Every Software Architect Should Know](https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X), Chapter 86, "Control the Data, Not Just the Code".
   > You need to be able to build the entire application, including the database, as one unit.
   > Make data and schema management a seamless part of your automated build and testing process early on and
   > include an undo button; it will pay large dividends.
