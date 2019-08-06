@@ -63,7 +63,7 @@ git commit SHA to **match** the applied changes against the codebase.
 
 It is difficult to answer the following questions:
 
-- What runs on the environment? &RightArrowLeftArrow; Which revision of the repository is deployed?
+- What version of this application is currently running on this environment?
 - What do I need to do to get to the latest `master` version of the code?
 - What do I need to do to get to a specific version of the code?
 
@@ -95,11 +95,6 @@ We can **only** apply [changes](#defining-changes) by putting them through versi
 
 - Resolves [Releases are patches](#releases-are-patches) by treating code as a whole.
 - Contributes to resolving [Inconsistent deployments](#inconsistent-deployments) by enabling pipelines.
-
-### Effect of these checks
-
-Automated, coherent, version-control-driven deployments will enable us to answer all the questions in
-[State awareness in environments](#state-awareness-in-environments).
 
 ### Defining "changes"
 
@@ -163,12 +158,13 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
 
 ## Consequences
 
-- We no longer need to refresh an environment from production; our deployment process can replicate a known state.
+- We no longer need to [refresh](#refresh-process) an environment from production;
+  our deployment process can replicate a known state. (We only need to restore production-like data, if needed.)
 - We can deploy our applications with automation tools, ensuring we can reliably release any time.
-- We can answer "What version of this application is currently running on this environment?", making it easier
+- We can answer the questions in [State awareness in environments](#state-awareness-in-environments), making it easier
   to prepare environments for testing or demos.
-- After adhering to the above checklist, we can deploy subsequent revisions of our applications on-demand, and
-  we can expect the deployed behaviour to match the revision's behaviour, leaving no surprises.
+- We can deploy our applications on-demand, and we can expect the deployed behaviour to exactly match the revision's
+  behaviour, leaving no surprises.
 
 [hosting-adr-42]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions/blob/master/doc/adr/0042-database-pipeline.md
 [hosting-adrs]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions
