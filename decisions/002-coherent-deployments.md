@@ -49,10 +49,15 @@ We sometimes skip releasing to a specific environment if it is unavailable, whic
 #### Refresh process
 
 To counter the drift of code and data, we periodically "refresh" the environments. In most cases, this means taking a
-copy of **production**, anonymising it if necessary and restoring that on the target environment.
+copy of **production** (configuration, code, data, indexes, views, triggers, functions, procedures and packages).
 
-However, we sometimes refresh from an older copy of production, which produces the same symptoms as "inconsistent
-deployments".
+The copy of code (including database functions and procedures) is necessary to resolve the effect of long-term
+[Releases are patches](#releases-are-patches), because we are unable to restore production functionality otherwise.
+
+We anonymise the production data if necessary and make the data available on the target environment.
+
+Sometimes we refresh from an older copy of production, which produces the same symptoms as
+[Inconsistent deployments](#inconsistent-deployments).
 
 #### Manual releases
 
