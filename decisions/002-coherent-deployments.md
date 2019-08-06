@@ -23,17 +23,24 @@ We add these for every release.
 
 #### Copying as version control
 
-Sometimes files are duplicated and referred to individually in releases, following this pattern:
+We have files defining an entity (procedure, seed data) in version control that were duplicated and changed in the new file:
 
 ```
-ebiz/db_install/release_01.ksh
-# refers ebiz/aol/lookups/name_of_lookup.ldt
-
-ebiz/db_install/release_02.ksh
-# refers ebiz/aol/lookups/name_of_lookup_2.ldt
+-rw-r--r--  1 user  staff   1.6M  <redacted>_phase1.sql
+-rw-r--r--  1 user  staff   1.6M  <redacted>_Phase1.1.sql
+-rw-r--r--  1 user  staff   1.6M  <redacted>_phase1.2.sql
+-rw-r--r--  1 user  staff   1.6M  <redacted>_phase1.3.sql
+-rw-r--r--  1 user  staff   1.7M  <redacted>_phase1.4.sql
+-rw-r--r--  1 user  staff   1.7M  <redacted>_phase1.41.sql
+-rw-r--r--  1 user  staff   1.9M  <redacted>_phase1.5.sql
+-rw-r--r--  1 user  staff   2.0M  <redacted>_phase1.61.sql
+-rw-r--r--  1 user  staff   1.9M  <redacted>_phase1.7.sql
+-rw-r--r--  1 user  staff   1.9M  <redacted>_phase1.8.sql
 ```
 
-These files refer to the same entity, which makes it harder to see which one is the "current" version.
+These files are referred in separate installation scripts or release instructions.
+
+It's sufficient to only change the original file as the history is retained as part of the version control system.
 
 #### Inconsistent deployments
 
