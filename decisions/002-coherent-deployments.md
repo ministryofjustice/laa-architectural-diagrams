@@ -77,6 +77,7 @@ We can **only** apply [changes](#defining-changes) by putting them through versi
 [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases.
 &RightArrowLeftArrow; Users **cannot** log in application servers or databases to apply [changes](#defining-changes).
 
+- We want to avoid the possibility to do manual changes as part of typical releases.
 - Resolves [Manual releases](#manual-releases) by preventing manual deployments.
 - Opens the possibility to resolve [Inconsistent deployments](#inconsistent-deployments) by enabling pipelines.
 
