@@ -9,7 +9,9 @@ Proposed
 In the Legal Aid Agency (LAA), we have many older applications.
 These applications currently follow **one or more** of the following practices:
 
-### Releases are patches
+### Symptoms of discontinuous deployments
+
+#### Releases are patches
 
 Most of these applications have one or more of the following:
 
@@ -19,7 +21,7 @@ Most of these applications have one or more of the following:
 
 We add these for every release.
 
-### Duplicated files
+#### Copying as version control
 
 Sometimes files are duplicated and referred to individually in releases, following this pattern:
 
@@ -33,11 +35,11 @@ ebiz/db_install/release_02.ksh
 
 These files refer to the same entity, which makes it harder to see which one is the "current" version.
 
-### Inconsistent deployments
+#### Inconsistent deployments
 
 We sometimes skip releasing to a specific environment if it is unavailable, which leads to a drift of functionality between the environments.
 
-### Refresh process
+#### Refresh process
 
 To counter the drift of code and data, we periodically "refresh" the environments. In most cases, this means taking a
 copy of **production**, anonymising it if necessary and restoring that on the target environment.
@@ -45,28 +47,51 @@ copy of **production**, anonymising it if necessary and restoring that on the ta
 However, we sometimes refresh from an older copy of production, which produces the same symptoms as "inconsistent
 deployments".
 
-### Manual releases
+#### Manual releases
 
 We manually copy the release-related files to the target server. We do not use unique identifiers similar to a
 git commit SHA to **match** the applied changes against the codebase.
 
-### Summary
+### State awareness in environments
 
 It is difficult to answer the following questions:
 
-- What runs on the environment? (After refresh, were all patches applied?)
-- What do I need to do to get to the latest `master` version of the code? (What patches do I need to apply?)
-- What do I need to do to get to a specific version of the code? (What patches have to be rolled back?)
+- What runs on the environment? &RightArrowLeftArrow; Which revision of the repository is deployed?
+- What do I need to do to get to the latest `master` version of the code?
+- What do I need to do to get to a specific version of the code?
 
 ## Proposal
 
 We propose that each service **must** work towards satisfying the following checklist for **non-development** environments:
 
-| Check | Expressed as a negation |
-| --- | --- |
-| We can **only** apply [changes](#defining-changes) by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
-| [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases. | Users **cannot** log in application servers or databases to apply [changes](#defining-changes). |
-| [Changes](#defining-changes) are applied or rolled back together. | It is impossible to deploy a version and have artefacts from earlier deployments still alive. |
+### Check 1: Version control
+
+We can **only** apply [changes](#defining-changes) by putting them through version control.
+&RightArrowLeftArrow; [Changes](#defining-changes) **cannot** be made without version control updates.
+
+- More frequent use of version control resolves [Copying as version control](#copying-as-version-control).
+- If everything is in git, it enables us to refer to versions of the application by the [git commit SHA][git-sha].
+
+### Check 2: Automation
+
+[Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases.
+&RightArrowLeftArrow; Users **cannot** log in application servers or databases to apply [changes](#defining-changes).
+
+- Resolves [Manual releases](#manual-releases) by preventing manual deployments.
+- Opens the possibility to resolve [Inconsistent deployments](#inconsistent-deployments) by enabling pipelines.
+
+### Check 3: Coherence
+
+[Changes](#defining-changes) are applied or rolled back together.
+&RightArrowLeftArrow; It is impossible to deploy a version and have artefacts from earlier deployments still alive.
+
+- Resolves [Releases are patches](#releases-are-patches) by treating code as a whole.
+- Contributes to resolving [Inconsistent deployments](#inconsistent-deployments) by enabling pipelines.
+
+### Effect of these checks
+
+Automated, coherent, version-control-driven deployments will enable us to answer all the questions in
+[State awareness in environments](#state-awareness-in-environments).
 
 ### Defining "changes"
 
@@ -134,8 +159,9 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
 - We can deploy our applications with automation tools, ensuring we can reliably release any time.
 - We can answer "What version of this application is currently running on this environment?", making it easier
   to prepare environments for testing or demos.
-- After adhering to the above checklist, we can deploy subsequent revisions of our applications on-demand and
+- After adhering to the above checklist, we can deploy subsequent revisions of our applications on-demand, and
   we can expect the deployed behaviour to match the revision's behaviour, leaving no surprises.
 
 [hosting-adr-42]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions/blob/master/doc/adr/0042-database-pipeline.md
 [hosting-adrs]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions
+[git-sha]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#Git-Has-Integrity
