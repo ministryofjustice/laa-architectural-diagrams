@@ -60,9 +60,9 @@ It is difficult to answer the following questions:
 
 ## Proposal
 
-We propose the following checklist for **non-development** environments:
+We propose that each service **must** work towards satisfying the following checklist for **non-development** environments:
 
-| Item | Expressed as a negation |
+| Check | Expressed as a negation |
 | --- | --- |
 | We can **only** apply [changes](#defining-changes) by putting them through version control. | [Changes](#defining-changes) **cannot** be made without version control updates. |
 | [Changes](#defining-changes) can be applied **without** the applying user logging into the application servers or databases. | Users **cannot** log in application servers or databases to apply [changes](#defining-changes). |
@@ -84,9 +84,9 @@ We propose the following checklist for **non-development** environments:
 For practical purposes, we recommend treating the different types of changes as different work.
 The steps to apply Java changes are different than applying PL/SQL changes.
 
-### Assessment
+### Example assessment
 
-Teams should
+To measure the necessary changes required, teams could
 
 - assess what kinds of "changes" do they have for an application;
 - assess where they are on this checklist;
