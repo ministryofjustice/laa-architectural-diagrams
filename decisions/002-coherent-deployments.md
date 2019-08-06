@@ -75,6 +75,7 @@ We propose that each service **must** work towards satisfying the following chec
 - Changes to source code resulting in application behaviour change, for example, Java, Ruby, PL/SQL, HTML, CSS, and similar.
 - Changes to categorical data which the users cannot change, for example, a list of allowed codes.
 - Changes to schemas or structures, for example, database schema migrations for relational databases.
+    - :memo: See also: [ADR-042: Database pipeline][hosting-adr-42] in the [hosting architectural decisions][hosting-adrs].
 
 "Changes" do *not* typically include:
 
@@ -135,3 +136,6 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
   to prepare environments for testing or demos.
 - After adhering to the above checklist, we can deploy subsequent revisions of our applications on-demand and
   we can expect the deployed behaviour to match the revision's behaviour, leaving no surprises.
+
+[hosting-adr-42]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions/blob/master/doc/adr/0042-database-pipeline.md
+[hosting-adrs]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions
