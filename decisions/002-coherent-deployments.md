@@ -109,6 +109,8 @@ We can **only** apply [changes](#defining-changes) by putting them through versi
 - Changes to categorical data which the users cannot change, for example, a list of allowed codes.
 - Changes to schemas or structures, for example, database schema migrations for relational databases.
     - :memo: See also: [ADR-042: Database pipeline][hosting-adr-42] in the [hosting architectural decisions][hosting-adrs].
+- [Changes to runtime configuration](https://12factor.net/config), either secrets or public.
+- [Changes to infrastructure][IaC].
 
 "Changes" do *not* typically include:
 
@@ -176,6 +178,7 @@ The Legal Aid Agency (LAA) architecture community will support applications movi
 - Joining the **hands-on** work as there _is_ a dedicated architect for every LAA service area.
   We will collate feedback and evolve this document.
 
+[IaC]: https://www.thoughtworks.com/insights/blog/infrastructure-code-reason-smile
 [hosting-adr-42]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions/blob/master/doc/adr/0042-database-pipeline.md
 [hosting-adrs]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions
 [git-sha]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#Git-Has-Integrity
