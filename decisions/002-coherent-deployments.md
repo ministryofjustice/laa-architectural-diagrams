@@ -115,9 +115,6 @@ We can **only** apply [changes](#defining-changes) by putting them through versi
 - Corrections to user-created production data.
 - Additions to production data that could be created by users.
 
-For practical purposes, we recommend treating the different types of changes as different work.
-The steps to apply Java changes are different than applying PL/SQL changes.
-
 ### Example assessment
 
 To measure the necessary changes required, teams could
