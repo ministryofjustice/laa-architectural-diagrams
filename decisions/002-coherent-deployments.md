@@ -160,8 +160,7 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
 
 ## Consequences
 
-- We no longer need to [refresh](#refresh-process) an environment from production;
-  our deployment process can replicate a known state. (We only need to restore production-like data, if needed.)
+- We only need to [refresh](#refresh-process) production-like **data**, if needed. We no longer need **code** refreshes.
 - We can deploy our applications with automation tools, ensuring we can reliably release any time.
 - We can answer the questions in [State awareness in environments](#state-awareness-in-environments), making it easier
   to prepare environments for testing or demos.
