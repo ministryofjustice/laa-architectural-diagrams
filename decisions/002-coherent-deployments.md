@@ -61,8 +61,11 @@ Sometimes we refresh from an older copy of production, which produces the same s
 
 #### Manual releases
 
-We manually copy the release-related files to the target server. We do not use unique identifiers similar to a
-git commit SHA to **match** the applied changes against the codebase.
+We manually copy the release-related files to the target server and manually apply the changes.
+
+Usually, we have to wait for someone with enough privileges to be available to do the release.
+
+We do not use unique identifiers similar to a git commit SHA to **match** the applied changes against the codebase.
 
 ### State awareness in environments
 
