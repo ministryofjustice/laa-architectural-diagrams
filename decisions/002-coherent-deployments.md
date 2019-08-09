@@ -167,6 +167,16 @@ We created a [demo checklist spreadsheet](https://docs.google.com/spreadsheets/d
 - We can deploy our applications on-demand, and we can expect the deployed behaviour to exactly match the revision's
   behaviour, leaving no surprises.
 
+### Support
+
+The Legal Aid Agency (LAA) architecture community will support applications moving to conform to this checklist by:
+
+- Setting up a Slack channel, [`#ask-laa-architects`][support-channel], where people can discuss and debate and offer
+  feedback.
+- Joining the **hands-on** work as there _is_ a dedicated architect for every LAA service area.
+  We will collate feedback and evolve this document.
+
 [hosting-adr-42]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions/blob/master/doc/adr/0042-database-pipeline.md
 [hosting-adrs]: https://github.com/ministryofjustice/laa-hosting-architectural-decisions
 [git-sha]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#Git-Has-Integrity
+[support-channel]: https://mojdt.slack.com/messages/CM9JJ1E87
