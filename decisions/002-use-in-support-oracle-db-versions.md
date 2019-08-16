@@ -12,11 +12,18 @@ Oracle provides three levels of support: [premier support, extended support, and
 
 Customers on supported versions are still expected to apply patch level updates from Oracle - this is one of the first things they will ask you when making a support call. Patches are typically released quarterly.
 
+The app modernisation team will update the version of the database used by the Client and Cost Management System (CCMS). This will affect multiple applications within the CCMS system, including:
+
+* The temporary data store used by the [Provider User Interface and Connector](https://github.com/ministryofjustice/laa-ccms-pui)
+* The underlying databases backing E-Business suite, SOA, OPA which are all Oracle products we host
+
 At the time of writing, CCMS uses 11.2, which is on extended support. This support will run out next year.
 
 There is a later version available, 12.1. This is also no longer in premier support, but has extended support available until July 2021. The extra cost of extended support is waived for customers who use E-Business Suite (which we do).
 
 As part of the CCMS modernisation project we are provisioning new infrastructure in AWS, which will include Oracle databases.
+
+We would recommend that other teams using Oracle databases also upgrade to this version.
 
 ## Decision
 
