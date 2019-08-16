@@ -27,10 +27,11 @@ We would recommend that other teams using Oracle databases also upgrade to this 
 
 ## Decision
 
-- We will move to version 12.1 of the database, which will keep us in support until July 2021
-- We will upgrade to a later version before that deadline, and will continue to upgrade major versions as the versions we're using become unsupported
-- We will apply patches quarterly, no more than one quarter after the patch was released
-- We will subscribe to [critical patch update notifications from Oracle](https://www.oracle.com/technetwork/topics/security/alerts-086861.html)
+For CCMS, the app modernisation team will:
+- move to version 12.1 of the database, which will keep us in support until July 2021
+- upgrade to a later version before that deadline, and will continue to upgrade major versions as the versions we're using become unsupported
+- apply patches quarterly, no more than one quarter after the patch was released
+- subscribe to [critical patch update notifications from Oracle](https://www.oracle.com/technetwork/topics/security/alerts-086861.html)
 
 ## Consequences
 We remain within a supported version of Oracle, so we can call the vendor if something goes wrong.
