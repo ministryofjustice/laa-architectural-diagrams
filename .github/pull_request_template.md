@@ -6,6 +6,6 @@ _Required._
 
 _Required._
 
-## Show me the result
+## What is the result?
 
 _Please embed the resulting image or a link to the file(s)._
