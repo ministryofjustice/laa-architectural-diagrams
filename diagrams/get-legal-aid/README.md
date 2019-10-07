@@ -15,6 +15,7 @@ to support these questions:
 | --- | --- |
 | <img src="ccms-ebs-system-context.png" width="280"/> | Shows the context of CCMS (Client and Cost Management System and E-Business Suite. |
 | <img src="criminal-legal-aid-application-system-landscape.png" width="280"/> | Shows the context of the criminal legal aid applications. |
+| <img src="ccms-api-landscape.png" width="280"/> | Shows the context of the CCMS API. |
 
 ## Container diagrams
 
@@ -29,3 +30,26 @@ These diagrams support these questions:
 | Diagram | Description |
 | --- | --- |
 | <img src="ccms-ebs-containers.png" width="280"/> | Container diagram for CCMS, focusing on the [provider user interface](https://github.com/ministryofjustice/laa-ccms-pui). |
+| <img src="ccms-api-containers.png" width="280"/> | Container diagram for [CCMS API](https://github.com/ministryofjustice/laa-ccms-provider-details-api). |
+| <img src="ccms-api-deployment.png" width="280"/> | Deployment diagram for [CCMS API](https://github.com/ministryofjustice/laa-ccms-provider-details-api). |
+
+## Authoring doccuments
+
+### C4
+
+C4 models might benefit from using [Structurizr Express](https://structurizr.com/express) and [fc4](https://fundingcircle.github.io/fc4-framework/tool/)
+
+```sh
+$ brew tap fundingcircle/floss
+$ brew install fc4
+```
+
+fc4 keeps the C4 YAML tidy.
+
+### PlantUML
+
+We're using Make to capture the commands
+
+```sh
+$ brew install plantuml
+```

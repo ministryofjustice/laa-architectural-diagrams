@@ -1,0 +1,62 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: CCMS Provider Details API
+description: The container diagram for the CCMS Provider Details API.
+
+elements:
+- type: Software System
+  name: Apply Service
+  position: '1500,100'
+  tags: moj
+- type: Software System
+  name: CCMS Provider Details API
+  containers:
+  - type: Container
+    name: ALB
+    position: '1500,900'
+    tags: moj
+  - type: Container
+    name: CCMS Database
+    description: CCMS DB in 6dg
+    tags: db, 6dg, moj
+    position: '1000,2100'
+  - type: Container
+    name: Docker Container
+    position: '1100,1500'
+    tags: moj
+  - type: Container
+    name: Log Aggregator
+    position: '2100,2100'
+    tags: moj
+
+relationships:
+- source: ALB
+  destination: Docker Container
+- source: ALB
+  description: pushes
+  destination: Log Aggregator
+- source: Apply Service
+  description: HTTPS+Bearer Token
+  destination: ALB
+- source: Docker Container
+  description: Queries
+  destination: CCMS Database
+- source: Docker Container
+  description: pushes
+  destination: Log Aggregator
+
+styles:
+- type: element
+  background: '#28a197'
+  tag: external
+- type: element
+  background: '#5a5c92'
+  tag: moj
+- type: element
+  tag: db
+  shape: Cylinder
+
+size: A4_Landscape
