@@ -3,23 +3,24 @@ links:
   Structurizr Express: https://structurizr.com/express
 ---
 type: Container
-scope: Contracted Work and Administration (CWA)
-description: Container Diagram for CWA
+scope: Contracted Work and Administration
+description: Container Diagram for Contracted Work and Administration
 
 elements:
 - type: Person
   name: External Users
-  description: Users not using DOM1 computers
+  description: Legal Providers
+  tags: external
   position: '2925,450'
 - type: Person
   name: Internal Users
-  description: Users using DOM1 computers
+  description: Ministry of Justice staff
   position: '2925,50'
 - type: Software System
-  name: Client Costs and Management System (CCMS)
+  name: Client Cost and Management System
   position: '100,1500'
 - type: Software System
-  name: Contracted Work and Administration (CWA)
+  name: Contracted Work and Administration
   containers:
   - type: Container
     name: AccessGate
@@ -47,10 +48,15 @@ elements:
   tags: database
   position: '100,1900'
 - type: Software System
-  name: HA Proxy
-  description: 2 instances in Active - Active configuration, routing based on IP to separate DOM1 and non DOM1 traffic
+  name: Entrypoint Router
+  description: VXR Router - Entry point for all external 6dg traffic
   tags: infrastructure
-  position: '900,700'
+  position: '2100,300'
+- type: Software System
+  name: Firewall
+  description: VMware vShield Edge - SSL termination happens here, this is the beginning of the LAA estate
+  tags: infrastructure
+  position: '900,300'
 - type: Software System
   name: HUB Database
   tags: database
@@ -60,22 +66,17 @@ elements:
   description: LAA identity management solution
   position: '2900,1500'
 - type: Software System
-  name: V Shield Edge
-  description: Virtual Firewall - SSL termination happens here, this is the beginning of the LAA estate
+  name: Load Balancer
+  description: HA Proxy, 2 instances in Active - Active configuration, routing based on IP to separate DOM1 and non DOM1 traffic
   tags: infrastructure
-  position: '900,300'
-- type: Software System
-  name: VXR Router
-  description: 6dg Entrypoint - Entry point for all external 6dg traffic
-  tags: infrastructure
-  position: '2100,300'
+  position: '900,700'
 
 relationships:
 - source: AccessGate
   description: Link to Portal OAM for authentication
   destination: LAA Portal
   tags: AWS VPN
-- source: Client Costs and Management System (CCMS)
+- source: Client Cost and Management System
   description: SOA Weblogic Datasource
   destination: Database
   technology: JDBC
@@ -104,28 +105,28 @@ relationships:
   - '2050,2000'
   - '2600,1800'
   tags: AWS VPN
+- source: Entrypoint Router
+  destination: Firewall
 - source: External Application Server
   destination: Database
 - source: External Users
-  destination: VXR Router
-- source: HA Proxy
-  destination: Oracle HTTP Server (OHS) and Webgate
+  destination: Entrypoint Router
+- source: Firewall
+  destination: Load Balancer
 - source: Internal Application Server
   destination: Database
 - source: Internal Users
-  destination: VXR Router
+  destination: Entrypoint Router
   vertices:
   - '2900,300'
+- source: Load Balancer
+  destination: Oracle HTTP Server (OHS) and Webgate
 - source: Oracle HTTP Server (OHS) and Webgate
   destination: AccessGate
 - source: Oracle HTTP Server (OHS) and Webgate
   destination: External Application Server
 - source: Oracle HTTP Server (OHS) and Webgate
   destination: Internal Application Server
-- source: V Shield Edge
-  destination: HA Proxy
-- source: VXR Router
-  destination: V Shield Edge
 
 styles:
 - type: element
@@ -139,11 +140,15 @@ styles:
   tag: database
   shape: Cylinder
 - type: element
-  tag: infrastructure
+  tag: external
   background: '#28a197'
+- type: element
+  tag: infrastructure
+  background: '#13880a'
   color: '#ffffff'
 - type: relationship
   tag: AWS VPN
+  color: '#13880a'
   dashed: 'false'
   routing: Orthogonal
 
