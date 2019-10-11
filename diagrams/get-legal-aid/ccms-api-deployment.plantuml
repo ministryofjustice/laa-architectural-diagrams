@@ -1,0 +1,46 @@
+@startuml(id=liveDeployment)
+scale max 2000x1409
+title CCMS API - Deployment - Initial
+caption Deployment for the CCMS API
+
+skinparam {
+  shadowing false
+  arrowColor #707070
+  actorBorderColor #707070
+  componentBorderColor #707070
+  rectangleBorderColor #707070
+  noteBackgroundColor #ffffff
+  noteBorderColor #707070
+}
+
+node "MOJ Cloud Platform" as 50 {
+  node "k8s" <<Kubernetes>> as 51 {
+    component "Apply Service" <<Container>> as 52 #5a5c92
+  }
+}
+
+node "LAA AWS Account" as 60 {
+  node "Load Balancer" as 61 {
+    ' Of course we don't know what AWS use to implement load balancing, and AWS being described as
+    ' "an interesting collection of Perl lashing together open-source components in a productised
+    ' fashion" is 🤯
+    component "haproxy" as 62 #5a5c92
+  }
+  node "Fargate" as 65 {
+    component "Spring Boot\nApplication" <<Container>> as 66 #5a5c92
+  }
+}
+
+node "LAA 6dg\nCloud Hosting" as 70 {
+  node "Database Server" <<Solaris>> as 71 {
+    node "Oracle" <<Oracle 11.x>> as 72 {
+      database "CCMS Database" <<Container>> as 73 #5a5c92
+    }
+  }
+}
+
+52 .[#707070]> 62 : <<HTTPS>>\nReads from
+62 .[#707070].> 66 : <<HTTP>>\nReads from
+66 .[#707070]> 73 : <<JDBC>>\nReads from
+
+@enduml

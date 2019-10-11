@@ -1,0 +1,55 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: LAA AWS
+description: The container diagram for my software system.
+
+elements:
+- type: Person
+  name: Legal Aid Provider
+  position: '425,1550'
+  tags: external
+- type: Software System
+  name: Apply Service
+  description: Apply service in Cloud Platform
+  position: '1400,1600'
+  tags: moj
+- type: Software System
+  name: CCMS DB
+  description: CCMS Oracle DB in 6dg
+  position: '4100,1600'
+  tags: moj
+- type: Software System
+  name: LAA AWS
+  containers:
+  - type: Container
+    name: CCMS Provider Details
+    position: '2800,1600'
+    tags: moj
+
+relationships:
+- source: Apply Service
+  description: Queries
+  destination: CCMS Provider Details
+- source: CCMS Provider Details
+  description: Queries
+  destination: CCMS DB
+- source: Legal Aid Provider
+  description: uses
+  destination: Apply Service
+
+styles:
+- type: element
+  background: '#28a197'
+  tag: external
+- type: element
+  background: '#5a5c92'
+  tag: moj
+- type: element
+  tag: Person
+  background: '#0041f8'
+  shape: Person
+
+size: A3_Landscape
