@@ -29,3 +29,4 @@ These diagrams support these questions:
 
 | Diagram | Description |
 | --- | --- |
+| <img src="analytical-platform-containers.png" width="280"/> | :microscope: Container diagram for the **proposed** Analytical Platform integration and processes. |

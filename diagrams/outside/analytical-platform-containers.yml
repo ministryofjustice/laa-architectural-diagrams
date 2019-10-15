@@ -1,0 +1,128 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: Container
+scope: Analytical Platform
+description: Describes the proposed analytical data handover using the Analytical Platform for the Legal Aid Agency (LAA)
+
+elements:
+- type: Person
+  name: Analytical Platform Team
+  description: Owns and supports the analytical platform
+  tags: focus
+  position: '225,1750'
+- type: Person
+  name: LAA Business Teams
+  description: Teams interested in the historical performance of the LAA
+  position: '2725,1750'
+- type: Person
+  name: LAA Management Information Team
+  tags: focus
+  position: '1525,1750'
+- type: Person
+  name: LAA Service Team
+  description: Teams owning operational systems and data
+  position: '225,650'
+- type: Software System
+  name: Analytical Platform
+  description: Hosts, processes and exposes analytical data for Ministry of Justice business teams
+  tags: focus
+  containers:
+  - type: Container
+    name: Operational Data Receiver
+    description: Receives and stores operational data from production applications
+    tags: focus
+    position: '1100,200'
+  - type: Container
+    name: Operational Data Store
+    description: Contains the submitted operational data
+    tags: focus,database
+    position: '1100,700'
+  - type: Container
+    name: Subject Area Data Store
+    description: Contains data transformed from operational data to "subject areas" for reporting
+    tags: focus,database
+    position: '1900,1200'
+  - type: Container
+    name: Subject Area Transformer
+    description: Transforms operational data to subject area data
+    tags: focus
+    position: '1100,1200'
+- type: Software System
+  name: LAA Business Reporting
+  description: Currently investigating feasible options, maybe Oracle Business Intelligence
+  position: '2700,1200'
+- type: Software System
+  name: LAA System
+  description: Live LAA system with operational data, can be anything
+  position: '200,200'
+
+relationships:
+- source: LAA Business Reporting
+  description: Uses subject area data to generate business reports
+  destination: Subject Area Data Store
+  technology: under investigation how
+- source: LAA Business Teams
+  description: View non-operational business reports
+  destination: LAA Business Reporting
+- source: LAA Management Information Team
+  description: talks about team needs
+  destination: Analytical Platform Team
+- source: LAA Management Information Team
+  description: Supports creating business reports
+  destination: LAA Business Reporting
+- source: LAA Management Information Team
+  description: Owns (writes and maintains) transformation rules
+  destination: Subject Area Transformer
+  technology: under investigation how
+- source: LAA Service Team
+  description: talks about team needs
+  destination: Analytical Platform Team
+- source: LAA Service Team
+  description: talks about impact
+  destination: LAA Management Information Team
+  vertices:
+  - '700,1700'
+- source: LAA Service Team
+  description: Owns (writes and maintains) the system and its data
+  destination: LAA System
+- source: LAA System
+  description: Makes operational data changes available
+  destination: Operational Data Receiver
+  technology: under investigation how
+- source: Operational Data Receiver
+  destination: Operational Data Store
+  technology: under investigation how
+- source: Operational Data Store
+  destination: Subject Area Transformer
+  technology: under investigation how
+- source: Subject Area Transformer
+  destination: Subject Area Data Store
+  technology: under investigation how
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+
+size: A4_Landscape
