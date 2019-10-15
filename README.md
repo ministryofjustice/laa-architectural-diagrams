@@ -27,6 +27,7 @@ Legal Aid Agency is divided into the following service areas, with their respect
 
 | Service area | Location | Responsibility |
 | ------------ | -------- | -------------- |
+| Outside Legal Aid | [`diagrams/outside/`](diagrams/outside/) | Diagrams that describe systems used by us but owned outside the Legal Aid Agency.
 | Get Access to Legal Aid | [`diagrams/get-access/`](diagrams/get-access/) | Providing members of the public with information about what is "legal aid" and how to apply for it.<br/>Contracting with legal advisors to provide legal aid for members of the public. |
 | Get Legal Aid | [`diagrams/get-legal-aid/`](diagrams/get-legal-aid/) |  |
 | Get Paid for Legal Aid | [`diagrams/get-paid/`](diagrams/get-paid/) |  |
