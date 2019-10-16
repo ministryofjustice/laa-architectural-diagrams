@@ -66,6 +66,9 @@ relationships:
 - source: LAA Business Teams
   description: View non-operational business reports
   destination: LAA Business Reporting
+- source: LAA Business Teams
+  description: talks about team needs
+  destination: LAA Management Information Team
 - source: LAA Management Information Team
   description: talks about team needs
   destination: Analytical Platform Team
