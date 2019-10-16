@@ -8,11 +8,6 @@ description: Describes the proposed analytical data handover using the Analytica
 
 elements:
 - type: Person
-  name: Analytical Platform Team
-  description: Owns and supports the analytical platform
-  tags: focus
-  position: '225,1750'
-- type: Person
   name: LAA Business Teams
   description: Teams interested in the historical performance of the LAA
   position: '2725,1750'
@@ -29,6 +24,11 @@ elements:
   description: Hosts, processes and exposes analytical data for Ministry of Justice business teams
   tags: focus
   containers:
+  - type: Person
+    name: Analytical Platform Team
+    description: Owns and supports the analytical platform
+    tags: Person,focus
+    position: '1125,650'
   - type: Container
     name: Operational Data Receiver
     description: Receives and stores operational data from production applications
@@ -38,21 +38,21 @@ elements:
     name: Operational Data Store
     description: Contains the submitted operational data
     tags: focus,database
-    position: '1100,700'
+    position: '1900,200'
   - type: Container
     name: Subject Area Data Store
     description: Contains data transformed from operational data to "subject areas" for reporting
     tags: focus,database
-    position: '1900,1200'
+    position: '2700,700'
   - type: Container
     name: Subject Area Transformer
     description: Transforms operational data to subject area data
     tags: focus
-    position: '1100,1200'
+    position: '1900,700'
 - type: Software System
   name: LAA Business Reporting
   description: Currently investigating feasible options, maybe Oracle Business Intelligence
-  position: '2700,1200'
+  position: '2700,1300'
 - type: Software System
   name: LAA System
   description: Live LAA system with operational data, can be anything
@@ -85,8 +85,6 @@ relationships:
 - source: LAA Service Team
   description: talks about impact
   destination: LAA Management Information Team
-  vertices:
-  - '700,1700'
 - source: LAA Service Team
   description: Owns (writes and maintains) the system and its data
   destination: LAA System
