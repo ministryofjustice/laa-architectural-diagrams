@@ -73,7 +73,7 @@ relationships:
   description: talks about team needs
   destination: Analytical Platform Team
 - source: LAA Management Information Team
-  description: Supports creating business reports
+  description: Owns the reporting system and supports creating business reports
   destination: LAA Business Reporting
 - source: LAA Management Information Team
   description: Owns (writes and maintains) transformation rules
@@ -82,6 +82,12 @@ relationships:
 - source: LAA Service Team
   description: talks about team needs
   destination: Analytical Platform Team
+- source: LAA Service Team
+  description: Owns and maintains the reporting system
+  destination: LAA Business Reporting
+  vertices:
+  - '450,2300'
+  - '2150,2300'
 - source: LAA Service Team
   description: talks about impact
   destination: LAA Management Information Team
