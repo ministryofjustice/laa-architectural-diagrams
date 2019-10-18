@@ -76,9 +76,11 @@ relationships:
 - source: LAA Business Teams
   description: talks about team needs
   destination: LAA Management Information Team
+  tags: communication
 - source: LAA Management Information Team
   description: talks about team needs
   destination: Analytical Platform Team
+  tags: communication
 - source: LAA Management Information Team
   description: Owns the reporting system and supports creating business reports
   destination: LAA Business Reporting
@@ -89,6 +91,7 @@ relationships:
 - source: LAA Service Team
   description: talks about team needs
   destination: Analytical Platform Team
+  tags: communication
 - source: LAA Service Team
   description: Owns and maintains the reporting system
   destination: LAA Business Reporting
@@ -98,6 +101,7 @@ relationships:
 - source: LAA Service Team
   description: talks about impact
   destination: LAA Management Information Team
+  tags: communication
 - source: LAA Service Team
   description: Owns (writes and maintains) the system and its data
   destination: LAA System
@@ -124,16 +128,13 @@ styles:
   tag: database
   shape: Cylinder
 - type: element
-  tag: external
-  background: '#c7e7e4'
-  color: '#0e3532'
-- type: element
   tag: focus
   background: '#5a5c92'
   color: '#ffffff'
-- type: element
-  tag: focus,external
-  background: '#28a197'
-  color: '#ffffff'
+- type: relationship
+  tag: communication
+  color: '#ac7f44'
+  dashed: 'false'
+  thickness: '3'
 
 size: A4_Landscape
