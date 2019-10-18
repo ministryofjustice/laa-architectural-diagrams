@@ -43,8 +43,8 @@ elements:
     position: '2700,200'
   - type: Container
     name: Subject Area Transformer
-    description: Running in Analytical Platform's Kubernetes cluster. Transforms operational data to subject area data
-    technology: DAG in Apache Airflow -or- custom Docker image
+    description: Transforms operational data to subject area data
+    technology: Custom Docker images running as part of DAGs in Apache Airflow in a Kubernetes cluster
     tags: focus
     position: '1900,200'
 - type: Software System
