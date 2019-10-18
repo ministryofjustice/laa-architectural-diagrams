@@ -31,17 +31,20 @@ elements:
     position: '1125,650'
   - type: Container
     name: Operational Data Store
-    description: A folder in an S3 bucket provisioned by the Analytical Platform. Contains the submitted operational data
+    technology: Folder in an S3 bucket
+    description: Contains the submitted operational data
     tags: focus,database
     position: '1100,200'
   - type: Container
     name: Subject Area Data Store
+    technology: Folder in an S3 bucket
     description: Contains data transformed from operational data to "subject areas" for reporting
     tags: focus,database
     position: '2700,200'
   - type: Container
     name: Subject Area Transformer
-    description: Transforms operational data to subject area data
+    description: Running in Analytical Platform's Kubernetes cluster. Transforms operational data to subject area data
+    technology: DAG in Apache Airflow -or- custom Docker image
     tags: focus
     position: '1900,200'
 - type: Software System
@@ -104,10 +107,10 @@ relationships:
   technology: write to S3 bucket
 - source: Operational Data Store
   destination: Subject Area Transformer
-  technology: under investigation how
+  technology: read from S3 bucket
 - source: Subject Area Transformer
   destination: Subject Area Data Store
-  technology: under investigation how
+  technology: write to S3 bucket
 
 styles:
 - type: element
