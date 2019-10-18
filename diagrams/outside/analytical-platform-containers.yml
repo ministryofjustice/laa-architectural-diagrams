@@ -14,7 +14,7 @@ elements:
 - type: Person
   name: LAA Management Information Team
   tags: focus
-  position: '1525,1750'
+  position: '1125,1750'
 - type: Person
   name: LAA Service Team
   description: Teams owning operational systems and data
@@ -30,25 +30,20 @@ elements:
     tags: Person,focus
     position: '1125,650'
   - type: Container
-    name: Operational Data Receiver
-    description: Receives and stores operational data from production applications
-    tags: focus
-    position: '1100,200'
-  - type: Container
     name: Operational Data Store
     description: Contains the submitted operational data
     tags: focus,database
-    position: '1900,200'
+    position: '1100,200'
   - type: Container
     name: Subject Area Data Store
     description: Contains data transformed from operational data to "subject areas" for reporting
     tags: focus,database
-    position: '2700,700'
+    position: '2700,200'
   - type: Container
     name: Subject Area Transformer
     description: Transforms operational data to subject area data
     tags: focus
-    position: '1900,700'
+    position: '1900,200'
 - type: Software System
   name: LAA Business Reporting
   description: Currently investigating feasible options, maybe Oracle Business Intelligence
@@ -59,6 +54,15 @@ elements:
   position: '200,200'
 
 relationships:
+- source: Analytical Platform Team
+  description: Provisions and maintains
+  destination: Operational Data Store
+- source: Analytical Platform Team
+  description: Provisions and maintains
+  destination: Subject Area Data Store
+- source: Analytical Platform Team
+  description: Provides infrastructure for
+  destination: Subject Area Transformer
 - source: LAA Business Reporting
   description: Uses subject area data to generate business reports
   destination: Subject Area Data Store
@@ -96,11 +100,8 @@ relationships:
   destination: LAA System
 - source: LAA System
   description: Makes operational data changes available
-  destination: Operational Data Receiver
-  technology: under investigation how
-- source: Operational Data Receiver
   destination: Operational Data Store
-  technology: under investigation how
+  technology: Depending on data store type
 - source: Operational Data Store
   destination: Subject Area Transformer
   technology: under investigation how
