@@ -31,7 +31,7 @@ elements:
     position: '1125,650'
   - type: Container
     name: Operational Data Store
-    description: Contains the submitted operational data
+    description: A folder in an S3 bucket provisioned by the Analytical Platform. Contains the submitted operational data
     tags: focus,database
     position: '1100,200'
   - type: Container
@@ -101,7 +101,7 @@ relationships:
 - source: LAA System
   description: Makes operational data changes available
   destination: Operational Data Store
-  technology: Depending on data store type
+  technology: write to S3 bucket
 - source: Operational Data Store
   destination: Subject Area Transformer
   technology: under investigation how
