@@ -30,9 +30,9 @@ elements:
     tags: Person,focus
     position: '1125,650'
   - type: Container
-    name: Operational Data Store
+    name: Data Landing Area
     technology: Folder in an S3 bucket
-    description: Contains the submitted operational data
+    description: Contains the uploaded operational data
     tags: focus,database
     position: '1100,200'
   - type: Container
@@ -59,13 +59,16 @@ elements:
 relationships:
 - source: Analytical Platform Team
   description: Provisions and maintains
-  destination: Operational Data Store
+  destination: Data Landing Area
 - source: Analytical Platform Team
   description: Provisions and maintains
   destination: Subject Area Data Store
 - source: Analytical Platform Team
   description: Provides infrastructure for
   destination: Subject Area Transformer
+- source: Data Landing Area
+  destination: Subject Area Transformer
+  technology: read from S3 bucket
 - source: LAA Business Reporting
   description: Uses subject area data to generate business reports
   destination: Subject Area Data Store
@@ -106,12 +109,9 @@ relationships:
   description: Owns (writes and maintains) the system and its data
   destination: LAA System
 - source: LAA System
-  description: Makes operational data changes available
-  destination: Operational Data Store
+  description: Makes operational data changes available for analytics
+  destination: Data Landing Area
   technology: write to S3 bucket
-- source: Operational Data Store
-  destination: Subject Area Transformer
-  technology: read from S3 bucket
 - source: Subject Area Transformer
   destination: Subject Area Data Store
   technology: write to S3 bucket
