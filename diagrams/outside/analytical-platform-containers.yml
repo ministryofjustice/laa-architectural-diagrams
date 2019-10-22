@@ -87,7 +87,7 @@ relationships:
 - source: LAA Management Information Team
   description: Owns (writes and maintains) transformation rules
   destination: Subject Area Transformer
-  technology: under investigation how
+  technology: AWS Glue, Apache Spark, Python 3, Docker
 - source: LAA Service Team
   description: talks about team needs
   destination: Analytical Platform Team
