@@ -58,13 +58,13 @@ elements:
 
 relationships:
 - source: Analytical Platform Team
-  description: Provisions and maintains
+  description: Owns and maintains the infrastructure
   destination: Data Landing Area
 - source: Analytical Platform Team
-  description: Provisions and maintains
+  description: Owns and maintains the infrastructure
   destination: Subject Area Data Store
 - source: Analytical Platform Team
-  description: Provides infrastructure for
+  description: Owns and maintains the infrastructure
   destination: Subject Area Transformer
 - source: Data Landing Area
   destination: Subject Area Transformer
@@ -77,33 +77,33 @@ relationships:
   description: View non-operational business reports
   destination: LAA Business Reporting
 - source: LAA Business Teams
-  description: talks about team needs
+  description: asks for changes driven by team needs
   destination: LAA Management Information Team
   tags: communication
 - source: LAA Management Information Team
-  description: talks about team needs
+  description: asks for changes driven by team needs
   destination: Analytical Platform Team
   tags: communication
 - source: LAA Management Information Team
-  description: Owns the reporting system and supports creating business reports
+  description: Owns the system and supports creating business reports
   destination: LAA Business Reporting
 - source: LAA Management Information Team
-  description: Owns (writes and maintains) transformation rules
+  description: Owns the code for the LAA data transformations
   destination: Subject Area Transformer
   technology: AWS Glue, Apache Spark, Python 3, Docker
 - source: LAA Service Team
-  description: talks about team needs
+  description: asks for changes driven by team needs
   destination: Analytical Platform Team
   tags: communication
 - source: LAA Service Team
-  description: Owns and maintains the reporting system
+  description: Owns the system
   destination: LAA Business Reporting
 - source: LAA Service Team
-  description: talks about impact
+  description: reports changes to uploaded operational data schemas
   destination: LAA Management Information Team
   tags: communication
 - source: LAA Service Team
-  description: Owns (writes and maintains) the system and its data
+  description: Owns the systems and its data
   destination: LAA System
 - source: LAA System
   description: Makes operational data changes available for analytics
