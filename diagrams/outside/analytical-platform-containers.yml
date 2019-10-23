@@ -14,11 +14,11 @@ elements:
 - type: Person
   name: LAA Management Information Team
   tags: focus
-  position: '1125,1750'
+  position: '1925,1750'
 - type: Person
   name: LAA Service Team
   description: Teams owning operational systems and data
-  position: '225,650'
+  position: '225,1750'
 - type: Software System
   name: Analytical Platform
   description: Hosts, processes and exposes analytical data for Ministry of Justice business teams
@@ -31,14 +31,14 @@ elements:
     position: '1125,650'
   - type: Container
     name: Data Landing Area
-    technology: Folder in an S3 bucket
     description: Contains the uploaded operational data
+    technology: Folder in an S3 bucket
     tags: focus,database
     position: '1100,200'
   - type: Container
     name: Subject Area Data Store
-    technology: Folder in an S3 bucket
     description: Contains data transformed from operational data to "subject areas" for reporting
+    technology: Folder in an S3 bucket
     tags: focus,database
     position: '2700,200'
   - type: Container
@@ -98,9 +98,6 @@ relationships:
 - source: LAA Service Team
   description: Owns and maintains the reporting system
   destination: LAA Business Reporting
-  vertices:
-  - '450,2300'
-  - '2150,2300'
 - source: LAA Service Team
   description: talks about impact
   destination: LAA Management Information Team
