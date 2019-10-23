@@ -55,6 +55,11 @@ elements:
   name: LAA System
   description: Live LAA system with operational data, can be anything
   position: '200,200'
+- type: Software System
+  name: PROPOSAL
+  description: This is a proposed state and it may change.
+  tags: status
+  position: '100,2200'
 
 relationships:
 - source: Analytical Platform Team
@@ -128,6 +133,14 @@ styles:
   tag: focus
   background: '#5a5c92'
   color: '#ffffff'
+- type: element
+  tag: status
+  background: '#fffc79'
+  color: '#ff9300'
+  height: '100'
+  metadata: 'false'
+  shape: RoundedBox
+  width: '3300'
 - type: relationship
   tag: communication
   color: '#ac7f44'
