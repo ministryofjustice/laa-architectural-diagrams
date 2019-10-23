@@ -49,7 +49,7 @@ elements:
     position: '1900,200'
 - type: Software System
   name: LAA Business Reporting
-  description: Currently investigating feasible options, maybe Oracle Business Intelligence
+  description: Provides ad-hoc and regular reports for business users. Currently Oracle Business Intelligence Enterprise Edition (OBIEE).
   position: '2700,1300'
 - type: Software System
   name: LAA System
@@ -72,7 +72,7 @@ relationships:
 - source: LAA Business Reporting
   description: Uses subject area data to generate business reports
   destination: Subject Area Data Store
-  technology: under investigation how
+  technology: currently not possible, maybe Amazon Redshift
 - source: LAA Business Teams
   description: View non-operational business reports
   destination: LAA Business Reporting
