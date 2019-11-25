@@ -1,0 +1,91 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Landscape
+scope: Civil Legal Aid management information systems
+description: Describes the components related to analytical reporting on civil legal aid
+
+elements:
+- type: Person
+  name: Direct Services Team
+  description: Maintains the Civil Legal Aid operator relationship and performance
+  position: '825,150'
+- type: Person
+  name: LAA Business Teams
+  description: Teams interested in the historical performance of the LAA
+  position: '2825,1750'
+- type: Software System
+  name: CLA MI (Apex)
+  description: '[apex.legalservices.gov.uk/ords/f?p=108] Civil Legal Aid Management Information'
+  tags: web,focus,Internal
+  position: '1200,1000'
+- type: Software System
+  name: Civil Legal Aid replica database
+  description: '[PostgreSQL] Replica database used for generating reports'
+  tags: database,focus,Internal
+  position: '400,1800'
+- type: Software System
+  name: Oracle Business Intelligence Enterprise Edition
+  description: (OBIEE) Creates reports for business users
+  tags: web,focus
+  position: '2000,1800'
+- type: Software System
+  name: Transformed Civil Legal Aid Data
+  description: '[Oracle] "TAD" schema in the Oracle Application Express (Apex) suite'
+  tags: database,focus,Internal
+  position: '1200,1800'
+- type: Software System
+  name: cla_backend
+  description: '[fox.civillegaladvice.service.gov.uk] Case Handling System Administration'
+  tags: web,focus,Internal
+  position: '400,1000'
+
+relationships:
+- source: CLA MI (Apex)
+  description: Transforms and stores civil legal aid data in
+  destination: Transformed Civil Legal Aid Data
+- source: Direct Services Team
+  description: Uploads OBIEE Extract ZIP file
+  destination: CLA MI (Apex)
+- source: Direct Services Team
+  description: Downloads OBIEE Extract ZIP file
+  destination: cla_backend
+- source: LAA Business Teams
+  description: Uses it to retrieve reports with civil legal aid data
+  destination: Oracle Business Intelligence Enterprise Edition
+- source: Oracle Business Intelligence Enterprise Edition
+  description: Connects to schema as a data source for civil legal aid data
+  destination: Transformed Civil Legal Aid Data
+- source: cla_backend
+  description: Generates reports from
+  destination: Civil Legal Aid replica database
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+
+size: A4_Landscape
