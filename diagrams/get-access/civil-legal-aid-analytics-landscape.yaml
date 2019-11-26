@@ -10,16 +10,12 @@ elements:
 - type: Person
   name: Direct Services Team
   description: Maintains the Civil Legal Aid operator relationship and performance
-  position: '825,150'
-- type: Person
-  name: LAA Business Teams
-  description: Teams interested in the historical performance of the LAA
-  position: '2825,1750'
+  position: '1525,150'
 - type: Software System
   name: CLA MI (Apex)
   description: '[apex.legalservices.gov.uk/ords/f?p=108] Civil Legal Aid Management Information'
   tags: web,focus,Internal
-  position: '1200,1000'
+  position: '1500,1000'
 - type: Software System
   name: Civil Legal Aid replica database
   description: '[PostgreSQL] Replica database used for generating reports'
@@ -29,12 +25,12 @@ elements:
   name: Oracle Business Intelligence Enterprise Edition
   description: (OBIEE) Creates reports for business users
   tags: web,focus
-  position: '2000,1800'
+  position: '2600,1800'
 - type: Software System
   name: Transformed Civil Legal Aid Data
   description: '[Oracle] "TAD" schema in the Oracle Application Express (Apex) suite'
   tags: database,focus,Internal
-  position: '1200,1800'
+  position: '1500,1800'
 - type: Software System
   name: cla_backend
   description: '[fox.civillegaladvice.service.gov.uk] Case Handling System Administration'
@@ -49,11 +45,11 @@ relationships:
   description: Uploads OBIEE Extract ZIP file
   destination: CLA MI (Apex)
 - source: Direct Services Team
-  description: Downloads OBIEE Extract ZIP file
-  destination: cla_backend
-- source: LAA Business Teams
   description: Uses it to retrieve reports with civil legal aid data
   destination: Oracle Business Intelligence Enterprise Edition
+- source: Direct Services Team
+  description: Downloads OBIEE Extract ZIP file
+  destination: cla_backend
 - source: Oracle Business Intelligence Enterprise Edition
   description: Connects to schema as a data source for civil legal aid data
   destination: Transformed Civil Legal Aid Data
