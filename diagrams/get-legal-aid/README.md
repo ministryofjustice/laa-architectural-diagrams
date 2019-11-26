@@ -31,6 +31,18 @@ These diagrams support these questions:
 | --- | --- |
 | <img src="ccms-ebs-containers.png" width="280"/> | Container diagram for CCMS, focusing on the [provider user interface](https://github.com/ministryofjustice/laa-ccms-pui). |
 | <img src="ccms-api-containers.png" width="280"/> | Container diagram for [CCMS API](https://github.com/ministryofjustice/laa-ccms-provider-details-api). |
+
+## Deployment diagrams
+
+**Intended audience**: Technical people inside and outside of the software development team; including software architects, developers and operations/support staff.
+
+These diagrams support these questions:
+
+- Where is the system deployed?
+- What infrastructure components do we have for the system?
+
+| Diagram | Description |
+| --- | --- |
 | <img src="ccms-api-deployment.png" width="280"/> | Deployment diagram for [CCMS API](https://github.com/ministryofjustice/laa-ccms-provider-details-api). |
 
 ## Authoring doccuments

@@ -31,3 +31,4 @@ These diagrams support these questions:
 | --- | --- |
 | <img src="civil-legal-aid-containers.png" width="280"/> | Container diagram for the Civil Legal Aid system. |
 | <img src="find-a-legal-adviser-containers.png" width="280"/> | Container diagram for the Find a Legal Adviser system. |
+| <img src="cwa-containers.png" width="280"/> | Container diagram for the Contracted Work and Administration (CWA) system. |
