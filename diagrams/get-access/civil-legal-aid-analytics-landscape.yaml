@@ -45,7 +45,7 @@ relationships:
   description: Uploads OBIEE Extract ZIP file
   destination: CLA MI (Apex)
 - source: Direct Services Team
-  description: Uses it to retrieve reports with civil legal aid data
+  description: Retrieves reports containing civil legal aid data
   destination: Oracle Business Intelligence Enterprise Edition
 - source: Direct Services Team
   description: Downloads OBIEE Extract ZIP file
