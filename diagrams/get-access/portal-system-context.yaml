@@ -21,6 +21,10 @@ elements:
   name: Live Service Team
   position: '225,2250'
 - type: Software System
+  name: Apply Service
+  description: Apply for civil legal aid in domestic abuse cases
+  position: '3200,2400'
+- type: Software System
   name: Client and Cost Management System
   description: (CCMS) Processes and validates claims and payments for legal aid work.
   position: '1600,300'
@@ -39,7 +43,7 @@ elements:
 - type: Software System
   name: Electronic Management Information
   description: (ERIC/EMI) Shares Management Information (MI) with providers via the Financial Statement report.
-  position: '3200,2200'
+  position: '3200,2000'
 - type: Software System
   name: Oracle Business Intelligence Enterprise Edition
   description: (OBIEE) Data analytics tool
@@ -111,6 +115,10 @@ relationships:
   vertices:
   - '2850,1500'
 - source: Portal
+  description: Authentication / Authorisation
+  destination: Apply Service
+  technology: SAML (Security Assertion Markup Language)
+- source: Portal
   description: Authentication for internal users (EBS - E-Business Suite)
   destination: Client and Cost Management System
   technology: Oracle AccessGate
@@ -129,13 +137,13 @@ relationships:
   vertices:
   - '1900,1950'
 - source: Portal
-  description: Authentication
+  description: Authentication / Authorisation
   destination: Crown Court Litigator's Fee
   technology: SAML (Security Assertion Markup Language)
   vertices:
   - '2400,1100'
 - source: Portal
-  description: Authentication
+  description: Authentication / Authorisation
   destination: Crown Court Remuneration
   technology: SAML (Security Assertion Markup Language)
   vertices:
@@ -145,7 +153,7 @@ relationships:
   destination: Electronic Management Information
   technology: Oracle Webgate
   vertices:
-  - '2650,2050'
+  - '2750,1950'
 - source: Portal
   description: Authentication
   destination: Oracle Business Intelligence Enterprise Edition
