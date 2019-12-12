@@ -1,0 +1,139 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Context
+scope: Apply for Legal Aid
+description: Describes the components related to Apply For Legal Aid Service
+
+elements:
+- type: Person
+  name: Legal Aid Applicant
+  description: Defendant requiring civil legal aid
+  tags: external
+  position: '225,1450'
+- type: Person
+  name: Legal Aid Provider
+  description: Civil Legal Aid Provider
+  tags: external
+  position: '1325,150'
+- type: Software System
+  name: Apply for Legal Aid
+  description: Apply for Legal Aid service
+  tags: focus,web
+  position: '1300,900'
+- type: Software System
+  name: Benefit Checker
+  description: |
+    Applicants Benefit information API.
+    Provides information from Department for Work and Pensions
+  tags: moj
+  position: '2600,1200'
+- type: Software System
+  name: CCMS Provider details API
+  description: |
+    Provide reference data required to integrate with Client Cost Management Services
+  tags: moj
+  position: '2600,400'
+- type: Software System
+  name: CCMS SOA
+  description: Client Cost Management System
+  tags: moj
+  position: '2600,1600'
+- type: Software System
+  name: Check Financial Eligibility
+  description: API for checking financial eligibility for legal aid
+  tags: moj
+  position: '2600,800'
+- type: Software System
+  name: GOV.UK Notify
+  description: |
+    Send emails, text messages and letters to goverment digital services users
+  tags: external
+  position: '200,900'
+- type: Software System
+  name: Geckoboard
+  description: KPI Dashboards
+  tags: external
+  position: '1600,1600'
+- type: Software System
+  name: True Layer
+  description: Open Banking Data API
+  tags: external
+  position: '1000,1600'
+
+relationships:
+- source: Apply for Legal Aid
+  description: Checks if applicant receives benefits
+  destination: Benefit Checker
+  technology: SOAP
+- source: Apply for Legal Aid
+  description: Gets provider details from
+  destination: CCMS Provider details API
+  technology: REST
+- source: Apply for Legal Aid
+  description: Submits legal aid application to
+  destination: CCMS SOA
+  technology: SOAP
+- source: Apply for Legal Aid
+  description: Checks applicant financial eligibility through
+  destination: Check Financial Eligibility
+  technology: REST
+- source: Apply for Legal Aid
+  description: Sends e-mail using
+  destination: GOV.UK Notify
+  technology: REST
+- source: Apply for Legal Aid
+  description: Sends metrics to
+  destination: Geckoboard
+  technology: REST
+- source: Apply for Legal Aid
+  description: Accesses Applicant bank information trough
+  destination: True Layer
+  technology: REST
+- source: GOV.UK Notify
+  description: Sends e-mail to
+  destination: Legal Aid Applicant
+- source: Legal Aid Applicant
+  description: Provide their financial situation at
+  destination: Apply for Legal Aid
+- source: Legal Aid Applicant
+  description: Gives bank access authorization to
+  destination: True Layer
+- source: Legal Aid Provider
+  description: Fills legal aid application trough
+  destination: Apply for Legal Aid
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: Software System
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+- type: relationship
+  tag: Relationship
+  width: '300'
+
+size: A4_Landscape
