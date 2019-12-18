@@ -1,0 +1,158 @@
+links:
+  The FC4 Framework: https://fundingcircle.github.io/fc4-framework/
+  Structurizr Express: https://structurizr.com/express
+---
+type: System Context
+scope: Court Data Adaptor
+description: Describes the components related to Court Data Adaptor
+
+elements:
+- type: Person
+  name: Case Worker
+  description: Legal Aid Agency case worker
+  tags: moj
+  position: '1225,50'
+- type: Person
+  name: Court Clerk
+  description: Maintain court records
+  tags: external
+  position: '2625,50'
+- type: Person
+  name: Provider
+  description: Legal Aid Provider
+  tags: external
+  position: '225,50'
+- type: Software System
+  name: Court Data Adaptor
+  description: API service providing access to HMCTS court data
+  tags: focus
+  position: '1900,1600'
+- type: Software System
+  name: HMCTS Common Platform
+  description: HMCTS API providing court data information
+  tags: external
+  position: '2600,800'
+- type: Software System
+  name: MAAT
+  description: |
+    Means Assessment & Administration Tool.
+    Used to process criminal legal aid applications in the Magistrates and Crown Courts
+  tags: moj
+  position: '700,1300'
+- type: Software System
+  name: MLRA
+  description: MAAT Libra Interface Application.
+  tags: moj,web
+  position: '1200,800'
+- type: Software System
+  name: eForms
+  description: |
+    Provides forms for providers to apply for legal aid.
+    Hosted/Managed by Equinity
+  tags: external,web
+  position: '200,800'
+
+relationships:
+- source: Case Worker
+  description: Searches and links Legal Aid Agency cases with court cases in
+  destination: MLRA
+- source: Court Clerk
+  description: Records Hearing result in
+  destination: HMCTS Common Platform
+- source: Court Data Adaptor
+  description: Searches court case through
+  destination: HMCTS Common Platform
+  technology: REST
+  vertices:
+  - '2350,1100'
+- source: Court Data Adaptor
+  description: Records interest of LAA over defendant in court case through
+  destination: HMCTS Common Platform
+  technology: REST
+  vertices:
+  - '2500,1350'
+- source: Court Data Adaptor
+  description: Obtains Hearing information from
+  destination: HMCTS Common Platform
+  technology: REST
+  vertices:
+  - '2600,1650'
+- source: Court Data Adaptor
+  description: Records Legal Aid representation in
+  destination: HMCTS Common Platform
+  technology: REST
+  vertices:
+  - '2100,950'
+- source: Court Data Adaptor
+  description: Updates hearing results for legal aid case in
+  destination: MLRA
+  technology: REST
+  vertices:
+  - '1800,1250'
+- source: HMCTS Common Platform
+  description: Publishes hearing result
+  destination: Court Data Adaptor
+  technology: REST
+  vertices:
+  - '2850,1750'
+- source: MAAT
+  description: Shares data with
+  destination: MLRA
+- source: MLRA
+  description: Searches court case in
+  destination: Court Data Adaptor
+  technology: REST
+  vertices:
+  - '1350,1750'
+- source: MLRA
+  description: Links LAA case with court case through
+  destination: Court Data Adaptor
+  technology: REST
+  vertices:
+  - '1550,1650'
+- source: MLRA
+  description: Records Legal Aid representation through
+  destination: Court Data Adaptor
+  technology: REST
+  vertices:
+  - '1600,1400'
+- source: Provider
+  description: Fills application for Legal Aid in
+  destination: eForms
+- source: eForms
+  description: Injects application into
+  destination: MAAT
+
+styles:
+- type: element
+  tag: Element
+  background: '#c9cadb'
+  color: '#25263c'
+- type: element
+  tag: Person
+  shape: Person
+- type: element
+  tag: Software System
+- type: element
+  tag: database
+  shape: Cylinder
+- type: element
+  tag: external
+  background: '#c7e7e4'
+  color: '#0e3532'
+- type: element
+  tag: focus
+  background: '#5a5c92'
+  color: '#ffffff'
+- type: element
+  tag: focus,external
+  background: '#28a197'
+  color: '#ffffff'
+- type: element
+  tag: web
+  shape: WebBrowser
+- type: relationship
+  tag: Relationship
+  width: '300'
+
+size: A4_Landscape
