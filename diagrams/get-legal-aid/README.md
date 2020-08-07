@@ -16,6 +16,7 @@ to support these questions:
 | <img src="ccms-ebs-system-context.png" width="280"/> | Shows the context of CCMS (Client and Cost Management System and E-Business Suite. |
 | <img src="criminal-legal-aid-application-system-landscape.png" width="280"/> | Shows the context of the criminal legal aid applications. |
 | <img src="ccms-api-landscape.png" width="280"/> | Shows the context of the CCMS API. |
+| <img src="apply-service-system-context.png" width="280"/> | Shows the context of the Apply For Legal Aid service. |
 
 ## Container diagrams
 
