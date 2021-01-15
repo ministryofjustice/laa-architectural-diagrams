@@ -56,6 +56,11 @@ elements:
   tags: web
   position: '4300,400'
 - type: Software System
+  name: GOV.UK Notify
+  description: Government-wide notification system (https://www.notifications.service.gov.uk/)
+  tags: external
+  position: '4300,1400'
+- type: Software System
   name: Ordnance Survey Places API
   description: 3rd party address finder API
   tags: external
@@ -68,7 +73,7 @@ elements:
   name: SendGrid
   description: 3rd party system to send e-mails
   tags: external
-  position: '4300,1600'
+  position: '4300,1800'
 
 relationships:
 - source: Citizen
@@ -131,11 +136,11 @@ relationships:
   description: Provides "which provider is nearest to my home" via
   destination: Find a Legal Adviser
 - source: cla_public
+  description: Sends confirmation and notification e-mails to citizens via
+  destination: GOV.UK Notify
+- source: cla_public
   description: Looks up addresses for during the contact form
   destination: Ordnance Survey Places API
-- source: cla_public
-  description: Sends confirmation and notification e-mails to citizens via
-  destination: SendGrid
 - source: cla_public
   description: Stores entered case and callback details via
   destination: cla_backend

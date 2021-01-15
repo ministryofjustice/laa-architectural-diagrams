@@ -34,6 +34,11 @@ elements:
   tags: web,focus
   position: '2200,1700'
 - type: Software System
+  name: GOV.UK Notify
+  description: Government-wide notification system (https://www.notifications.service.gov.uk/)
+  tags: external
+  position: '4000,1000'
+- type: Software System
   name: Ordnance Survey Places API
   description: 3rd party address finder API
   tags: external
@@ -42,11 +47,6 @@ elements:
   name: Provider's Case Handling System
   tags: external
   position: '700,400'
-- type: Software System
-  name: SendGrid
-  description: 3rd party system to send e-mails
-  tags: external
-  position: '4000,1000'
 - type: Software System
   name: postcodes.io
   description: Postcode lookup API for latitude/longitude conversion
@@ -76,11 +76,11 @@ relationships:
   description: Provides "which provider is nearest to my home" via
   destination: Find a Legal Adviser
 - source: Civil Legal Aid
+  description: Sends e-mails via
+  destination: GOV.UK Notify
+- source: Civil Legal Aid
   description: Looks up full addresses from postcodes
   destination: Ordnance Survey Places API
-- source: Civil Legal Aid
-  description: Sends e-mails via
-  destination: SendGrid
 - source: Direct Services Team
   description: Periodically downloads case extract reports to propagate to management information systems
   destination: Civil Legal Aid
