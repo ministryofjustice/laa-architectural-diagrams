@@ -1,7 +1,14 @@
-# Legal Aid Agency Architecture Documentation
+# [ARCHIVED] Legal Aid Agency Architecture Documentation
 
 The documentation here uses the [C4 model][c4model] by [Simon Brown][simonbrown].
 We use the [FC4 toolset][fc4-toolset] to normalise the source of C4 diagrams authored with [Structurizr Express][se].
+
+## Archived status
+
+As of 2021 this repository is no longer the source of truth.  For the latest information
+you should look at the replacement repository, [laa-architecture-as-code](https://github.com/ministryofjustice/laa-architecture-as-code).
+
+As a result of the above, this repository has been archived and marked as read only.
 
 ## Editing
 * Install and setup the fc4 tool https://fundingcircle.github.io/fc4-framework/tool/#setup
